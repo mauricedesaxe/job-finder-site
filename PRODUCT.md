@@ -35,9 +35,9 @@ Owners arrive from the page, Cal.com, or a direct ping. They book https://cal.co
 
 - Name: Job Fiend. Domain: jobfiend.io.
 - Voice: first person, the Operator speaking. Not a company. Not a SaaS pitch.
-- Binding visual reference: `public/images/job-fiend-concept.jpg` (dark maroon field, cream serif, one face looking back). Generated, not final art, but it is the current brand start.
 - CTA label: "Book a setup". Secondary: "Github Repo" → https://github.com/mauricedesaxe/job-finder.
 - Demo: YouTube `bO7vzA0xbWg`, embedded.
+- `public/images/job-fiend-concept.jpg` is a generated sketch of tone (hunger, looking back). It is not approved art and it does not lock a palette, type, or layout. Maroon/cream on the live site was inferred from that file, not agreed.
 
 ## Evidence on Hand
 
