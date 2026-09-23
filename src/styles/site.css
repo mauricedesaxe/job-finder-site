@@ -1,0 +1,128 @@
+:root {
+  --ink: #18130f;
+  --paper: #f4efe4;
+  --muted: #514942;
+  --quiet: #786f67;
+  --rule: rgb(24 19 15 / 0.42);
+  --accent: #b42318;
+  --shadow: 8px 8px 0 var(--accent);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: auto;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Newsreader', Georgia, 'Times New Roman', serif;
+}
+
+a {
+  color: var(--ink);
+  text-underline-offset: 0.22em;
+  text-decoration-thickness: 1px;
+}
+
+a:hover {
+  color: var(--accent);
+}
+
+a:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 4px;
+}
+
+main {
+  width: min(720px, calc(100% - 2.5rem));
+  margin: 0 auto;
+  padding: clamp(2rem, 6vw, 5rem) 0 4rem;
+}
+
+.brand {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  font-family: 'DM Mono', ui-monospace, monospace;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+h1 {
+  margin: 0 0 1.25rem;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 500;
+  line-height: 1.15;
+}
+
+.lede,
+.copy p {
+  margin: 0 0 1.1rem;
+  font-size: 1.15rem;
+  line-height: 1.55;
+}
+
+.copy p:last-child {
+  margin-bottom: 0;
+}
+
+.demo {
+  margin: 2rem 0;
+}
+
+.demo-frame {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--rule);
+  box-shadow: var(--shadow);
+  background: #111;
+}
+
+.demo-frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem 1.25rem;
+  align-items: center;
+  margin: 2rem 0 0;
+}
+
+.book {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.65rem 1.1rem;
+  border: 1px solid var(--ink);
+  background: var(--ink);
+  color: var(--paper);
+  font-family: 'DM Mono', ui-monospace, monospace;
+  font-size: 0.92rem;
+  text-decoration: none;
+  box-shadow: var(--shadow);
+}
+
+.book:hover {
+  color: var(--paper);
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.repo {
+  font-family: 'DM Mono', ui-monospace, monospace;
+  font-size: 0.92rem;
+}

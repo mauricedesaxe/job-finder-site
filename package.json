@@ -1,0 +1,19 @@
+{
+  "name": "jobfiend.io",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.5.9",
+    "astro": "^4.5.6",
+    "typescript": "^5.4.2"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20260529.1"
+  },
+  "packageManager": "yarn@4.9.1"
+}
