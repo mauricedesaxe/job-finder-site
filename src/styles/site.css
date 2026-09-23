@@ -87,6 +87,13 @@ body {
   transform: rotate(-1.8deg);
 }
 
+@media (min-width: 90rem) {
+  .walker {
+    top: -4rem;
+    width: 44rem;
+  }
+}
+
 .block {
   display: grid;
   grid-template-columns: 2.75rem minmax(0, 1fr);
