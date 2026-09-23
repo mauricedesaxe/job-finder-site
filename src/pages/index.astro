@@ -7,17 +7,29 @@ const description =
 ---
 
 <PageLayout title={title} description={description} canonicalPath="/">
-  <header class="poster">
-    <h1>{title}</h1>
-    <img
-      src="/images/job-fiend-concept.jpg"
-      alt="Job Fiend. A woman looks back over her shoulder in red light."
-      width="2048"
-      height="2048"
-    />
-  </header>
-  <main>
-    <p class="lede">{description}</p>
+  <main class="page">
+    <div class="hero">
+      <div class="hero-copy">
+        <h1>{title}</h1>
+        <svg class="scribble" viewBox="0 0 220 18" aria-hidden="true">
+          <path
+            d="M2 11 C 28 4, 46 16, 72 9 S 120 17, 148 8 S 196 15, 218 10"
+            fill="none"
+            stroke="#49B6E5"
+            stroke-width="3"
+            stroke-linecap="round"
+          />
+        </svg>
+        <p class="lede">{description}</p>
+      </div>
+      <img
+        class="walker"
+        src="/images/job-fiend-walking.jpg"
+        alt="The Job Fiend character walking, looking back over her shoulder."
+        width="1200"
+        height="1200"
+      />
+    </div>
     <div class="actions">
       <a class="book" href="https://cal.com/alexlazar/30-min-meeting">Book a setup</a>
       <a

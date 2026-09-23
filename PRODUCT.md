@@ -37,7 +37,8 @@ Owners arrive from the page, Cal.com, or a direct ping. They book https://cal.co
 - Voice: first person, the Operator speaking. Not a company. Not a SaaS pitch.
 - CTA label: "Book a setup". Secondary: "Github Repo" → https://github.com/mauricedesaxe/job-finder.
 - Demo: YouTube `bO7vzA0xbWg`, embedded.
-- `public/images/job-fiend-concept.jpg` is a generated sketch of tone (hunger, looking back). It is not approved art and it does not lock a palette, type, or layout. Maroon/cream on the live site was inferred from that file, not agreed.
+- Settled visual world for now: TypeUI doodle (handwritten Delius Swash Caps, white paper, navy ink, sky-blue marks, imperfect lines).
+- Character: the walking-happy figure. The sad walk exists as unused art. Neither locks a cinematic maroon homepage.
 
 ## Evidence on Hand
 

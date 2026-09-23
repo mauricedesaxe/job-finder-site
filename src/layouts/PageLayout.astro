@@ -9,7 +9,7 @@ interface Props {
 
 const { title, description, canonicalPath } = Astro.props;
 const canonicalUrl = new URL(canonicalPath, Astro.site ?? 'https://jobfiend.io').toString();
-const ogImageUrl = new URL('/images/job-fiend-concept.jpg', Astro.site ?? 'https://jobfiend.io').toString();
+const ogImageUrl = new URL('/images/job-fiend-walking.jpg', Astro.site ?? 'https://jobfiend.io').toString();
 ---
 
 <!doctype html>
@@ -18,7 +18,7 @@ const ogImageUrl = new URL('/images/job-fiend-concept.jpg', Astro.site ?? 'https
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#4a1018" />
+    <meta name="theme-color" content="#ffffff" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Job Fiend" />
     <meta property="og:title" content={title} />
@@ -34,12 +34,18 @@ const ogImageUrl = new URL('/images/job-fiend-concept.jpg', Astro.site ?? 'https
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Delius+Swash+Caps&display=swap"
       rel="stylesheet"
     />
     <title>{title}</title>
   </head>
   <body>
+    <svg class="sketch" aria-hidden="true">
+      <filter id="wobble" x="-8%" y="-8%" width="116%" height="116%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="3" result="n" />
+        <feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" />
+      </filter>
+    </svg>
     <slot />
   </body>
 </html>

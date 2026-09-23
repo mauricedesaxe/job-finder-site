@@ -1,16 +1,14 @@
 :root {
-  --blood: #4a1018;
-  --blood-deep: #2a070c;
-  --cream: #f3e6d0;
-  --cream-dim: #e2d0b8;
-  --space-1: 0.25rem;
+  --primary: #49b6e5;
+  --secondary: #263d5b;
+  --surface: #ffffff;
+  --text: #111827;
   --space-2: 0.5rem;
   --space-3: 0.75rem;
   --space-4: 1rem;
   --space-6: 1.5rem;
   --space-8: 2rem;
   --space-12: 3rem;
-  --space-16: 4rem;
 }
 
 * {
@@ -18,81 +16,114 @@
 }
 
 html {
-  scroll-behavior: auto;
-}
-
-::selection {
-  background: var(--cream);
-  color: var(--blood);
+  background: var(--surface);
 }
 
 body {
   margin: 0;
-  background: var(--blood);
-  color: var(--cream);
-  font-family: 'Newsreader', Georgia, 'Times New Roman', serif;
-  font-size: 1.125rem;
-  font-weight: 400;
-  line-height: 1.6;
-  letter-spacing: 0.01em;
+  color: var(--text);
+  background: var(--surface);
+  font-family: 'Delius Swash Caps', 'Segoe Script', cursive;
+  font-size: 1.25rem;
+  line-height: 1.7;
 }
 
-a {
-  color: var(--cream);
-  text-underline-offset: 0.22em;
-  text-decoration-thickness: 1px;
+::selection {
+  background: var(--primary);
+  color: var(--surface);
 }
 
-a:hover {
-  color: #fff8ee;
-}
-
-a:focus-visible {
-  outline: 3px solid var(--cream);
-  outline-offset: 4px;
-}
-
-.poster {
-  max-width: min(40rem, 100%);
-  margin: 0 auto;
-}
-
-.poster h1 {
+.sketch {
   position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  white-space: nowrap;
+  width: 0;
+  height: 0;
 }
 
-.poster img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-main {
-  width: min(38rem, calc(100% - 2.5rem));
+.page {
+  width: min(44rem, calc(100% - 2.5rem));
   margin: 0 auto;
-  padding: var(--space-12) 0 var(--space-16);
+  padding: var(--space-12) 0 5rem;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) min(15rem, 42%);
+  gap: var(--space-6);
+  align-items: end;
+  margin-bottom: var(--space-8);
+}
+
+.hero-copy h1 {
+  margin: 0 0 var(--space-3);
+  font-size: clamp(2.75rem, 10vw, 4rem);
+  font-weight: 400;
+  line-height: 1.05;
+}
+
+.scribble {
+  display: block;
+  width: min(14rem, 70%);
+  height: 18px;
+  margin: 0 0 var(--space-4);
 }
 
 .lede {
-  margin: 0 0 var(--space-6);
+  margin: 0;
   font-size: 1.45rem;
-  font-weight: 500;
-  line-height: 1.35;
-  letter-spacing: 0;
+  line-height: 1.45;
 }
 
-.copy {
-  margin-top: var(--space-12);
+.walker {
+  display: block;
+  width: 100%;
+  height: auto;
+  transform: rotate(-2.4deg);
+  filter: url(#wobble);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4) var(--space-6);
+  align-items: center;
+  margin: 0 0 var(--space-12);
+}
+
+.book {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  padding: 0.55rem 1.15rem;
+  color: var(--surface);
+  background: var(--secondary);
+  text-decoration: none;
+  filter: url(#wobble);
+}
+
+.book:hover {
+  background: #1b2d44;
+}
+
+.book:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 4px;
+}
+
+.repo {
+  color: var(--secondary);
+  text-underline-offset: 0.28em;
+}
+
+a {
+  color: var(--secondary);
+}
+
+a:hover {
+  color: var(--text);
 }
 
 .copy p {
   margin: 0 0 var(--space-4);
-  max-width: 38rem;
 }
 
 .copy p:last-child {
@@ -100,14 +131,15 @@ main {
 }
 
 .demo {
-  margin: var(--space-12) 0 0;
+  margin-top: var(--space-12);
 }
 
 .demo-frame {
   position: relative;
   overflow: hidden;
   aspect-ratio: 16 / 9;
-  background: var(--blood-deep);
+  background: #f3f6f9;
+  filter: url(#wobble);
 }
 
 .demo-frame iframe {
@@ -118,40 +150,13 @@ main {
   border: 0;
 }
 
-.actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-4) var(--space-6);
-  align-items: center;
-  margin: 0;
-}
-
-.book {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  padding: 0.7rem 1.15rem;
-  border: 1px solid var(--cream);
-  background: var(--cream);
-  color: var(--blood);
-  font-family: inherit;
-  font-size: 1.05rem;
-  font-weight: 500;
-  text-decoration: none;
-}
-
-.book:hover {
-  color: var(--blood-deep);
-  background: #fff8ee;
-  border-color: #fff8ee;
-}
-
-.repo {
-  font-size: 1.05rem;
-}
-
 @media (max-width: 40rem) {
-  .lede {
-    font-size: 1.28rem;
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .walker {
+    max-width: 16rem;
+    margin: 0 auto;
   }
 }
