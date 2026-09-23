@@ -1,0 +1,7 @@
+{
+  "database": "dolt",
+  "backend": "dolt",
+  "dolt_mode": "embedded",
+  "dolt_database": "jobfiend",
+  "project_id": "590eebe8-58aa-415b-903e-7ed45a682415"
+}
