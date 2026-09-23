@@ -8,88 +8,46 @@ const description =
 const steps = [
   {
     title: 'How it works',
-    sections: [
-      {
-        heading: 'Daily search',
-        body: "My system will search for jobs for you every day based on criteria you provided and then put them in a review queue.",
-      },
-      {
-        heading: 'It learns you',
-        body: "As you pursue or reject provided jobs, the system learns what you want and gives you more of that.",
-      },
+    paragraphs: [
+      "My system will search for jobs for you every day based on criteria you provided and then put them in a review queue.",
+      "As you pursue or reject provided jobs, the system learns what you want and gives you more of that.",
     ],
   },
   {
     title: 'Free and open',
-    sections: [
-      {
-        heading: 'Open source',
-        body: "Everything is open source and the system itself, not including its various underlying vendors and providers, is free to use.",
-      },
-      {
-        heading: 'Managed plans',
-        body: "This means that you can set it up yourself but to abstract that work from you, I offer a limited number of free managed plans.",
-      },
+    paragraphs: [
+      "Everything is open source and the system itself, not including its various underlying vendors and providers, is free to use.",
+      "This means that you can set it up yourself but to abstract that work from you, I offer a limited number of free managed plans.",
     ],
   },
   {
-    title: 'The setup call',
-    sections: [
-      {
-        heading: 'Getting to know you',
-        body: "We book a call and I spend time with you learning about you. I want to know about your experiences. I want to know about your needs, wants, and desires.",
-      },
-      {
-        heading: 'First jobs, live',
-        body: "We point the system at your profile while on the call and we look at the first few jobs it finds together.",
-      },
+    title: "I'll hold your hand through the process",
+    paragraphs: [
+      "We book a call and I spend time with you learning about you. I want to know about your experiences. I want to know about your needs, wants, and desires.",
+      "We point the system at your profile while on the call and we look at the first few jobs it finds together.",
     ],
   },
   {
-    title: 'Daily reviews',
-    sections: [
-      {
-        heading: 'New jobs every day',
-        body: "Once we're done with our call, the system should have some degree of understanding about what jobs you want and it should give you more jobs every day.",
-      },
-      {
-        heading: 'Your feedback steers it',
-        body: "I want you to review them. I want you to give feedback when a job is bad and when a job is good and why.",
-      },
+    title: "You'll receive jobs daily",
+    paragraphs: [
+      "Once we're done with our call, the system should have some degree of understanding about what jobs you want and it should give you more jobs every day.",
+      "I want you to review them. I want you to give feedback when a job is bad and when a job is good and why.",
     ],
   },
   {
-    title: 'The value exchange',
-    sections: [
-      {
-        heading: 'The deal',
-        body: "This is the core value exchange I'm asking for from you.",
-      },
-      {
-        heading: 'It finds you jobs',
-        body: "My system will absolutely find you jobs once it's past that initial learning phase. I know because it found me jobs that I liked and applied to.",
-      },
-      {
-        heading: 'What I need from you',
-        body: "But I need to be able to collect this feedback from you to be able to improve the system even further so that more people can benefit from it.",
-      },
+    title: "What's the price?",
+    paragraphs: [
+      "This is the core value exchange I'm asking for from you.",
+      "My system will absolutely find you jobs once it's past that initial learning phase. I know because it found me jobs that I liked and applied to.",
+      "But I need to be able to collect this feedback from you to be able to improve the system even further so that more people can benefit from it.",
     ],
   },
   {
     title: "Why it's free",
-    sections: [
-      {
-        heading: 'No one pays',
-        body: "As everything stands right now I'm not making any money from this. I'm not charging you. I'm not charging the employer.",
-      },
-      {
-        heading: 'I pay the bills',
-        body: "In fact I'm spending out of pocket on all the vendors and providers underneath the system that will run for you.",
-      },
-      {
-        heading: 'The long game',
-        body: "I do this, of course, not out of the kindness of my soul. I am hoping that as I show this to more people and I gather more feedback, I will eventually be able to turn it into some sort of a commercial project.",
-      },
+    paragraphs: [
+      "As everything stands right now I'm not making any money from this. I'm not charging you. I'm not charging the employer.",
+      "In fact I'm spending out of pocket on all the vendors and providers underneath the system that will run for you.",
+      "I do this, of course, not out of the kindness of my soul. I am hoping that as I show this to more people and I gather more feedback, I will eventually be able to turn it into some sort of a commercial project.",
     ],
   },
 ];
@@ -166,11 +124,8 @@ const circlePath =
         </span>
         <div class="block-body">
           <h2>{step.title}</h2>
-          {step.sections.map((section) => (
-            <div class="sub">
-              <h3>{section.heading}</h3>
-              <p>{section.body}</p>
-            </div>
+          {step.paragraphs.map((paragraph) => (
+            <p class="sub">{paragraph}</p>
           ))}
         </div>
       </section>
