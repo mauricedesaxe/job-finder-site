@@ -9,6 +9,7 @@ interface Props {
 
 const { title, description, canonicalPath } = Astro.props;
 const canonicalUrl = new URL(canonicalPath, Astro.site ?? 'https://jobfiend.io').toString();
+const ogImageUrl = new URL('/images/job-fiend-concept.jpg', Astro.site ?? 'https://jobfiend.io').toString();
 ---
 
 <!doctype html>
@@ -17,14 +18,17 @@ const canonicalUrl = new URL(canonicalPath, Astro.site ?? 'https://jobfiend.io')
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content={description} />
+    <meta name="theme-color" content="#4a1018" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Job Fiend" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
     <link rel="canonical" href={canonicalUrl} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -36,9 +40,6 @@ const canonicalUrl = new URL(canonicalPath, Astro.site ?? 'https://jobfiend.io')
     <title>{title}</title>
   </head>
   <body>
-    <main>
-      <a class="brand" href="/">Job Fiend</a>
-      <slot />
-    </main>
+    <slot />
   </body>
 </html>

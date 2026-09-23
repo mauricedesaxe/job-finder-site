@@ -1,11 +1,9 @@
 :root {
-  --ink: #18130f;
-  --paper: #f4efe4;
-  --muted: #514942;
-  --quiet: #786f67;
-  --rule: rgb(24 19 15 / 0.42);
-  --accent: #b42318;
-  --shadow: 8px 8px 0 var(--accent);
+  --blood: #4a1018;
+  --blood-deep: #2a070c;
+  --cream: #f3e6d0;
+  --cream-dim: #d4c4ae;
+  --rule: rgb(243 230 208 / 0.28);
 }
 
 * {
@@ -18,48 +16,52 @@ html {
 
 body {
   margin: 0;
-  background: var(--paper);
-  color: var(--ink);
+  background: var(--blood);
+  color: var(--cream);
   font-family: 'Newsreader', Georgia, 'Times New Roman', serif;
 }
 
 a {
-  color: var(--ink);
+  color: var(--cream);
   text-underline-offset: 0.22em;
   text-decoration-thickness: 1px;
 }
 
 a:hover {
-  color: var(--accent);
+  color: #fff8ee;
 }
 
 a:focus-visible {
-  outline: 3px solid var(--accent);
+  outline: 3px solid var(--cream);
   outline-offset: 4px;
+}
+
+.poster {
+  margin: 0;
+}
+
+.poster img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 92vh;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.poster h1 {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
 }
 
 main {
   width: min(720px, calc(100% - 2.5rem));
   margin: 0 auto;
-  padding: clamp(2rem, 6vw, 5rem) 0 4rem;
-}
-
-.brand {
-  display: inline-block;
-  margin-bottom: 1.5rem;
-  font-family: 'DM Mono', ui-monospace, monospace;
-  font-size: 0.82rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  text-decoration: none;
-}
-
-h1 {
-  margin: 0 0 1.25rem;
-  font-size: clamp(2rem, 5vw, 3rem);
-  font-weight: 500;
-  line-height: 1.15;
+  padding: clamp(2rem, 6vw, 4.5rem) 0 5rem;
 }
 
 .lede,
@@ -82,8 +84,7 @@ h1 {
   overflow: hidden;
   aspect-ratio: 16 / 9;
   border: 1px solid var(--rule);
-  box-shadow: var(--shadow);
-  background: #111;
+  background: var(--blood-deep);
 }
 
 .demo-frame iframe {
@@ -107,19 +108,18 @@ h1 {
   align-items: center;
   min-height: 44px;
   padding: 0.65rem 1.1rem;
-  border: 1px solid var(--ink);
-  background: var(--ink);
-  color: var(--paper);
+  border: 1px solid var(--cream);
+  background: var(--cream);
+  color: var(--blood);
   font-family: 'DM Mono', ui-monospace, monospace;
   font-size: 0.92rem;
   text-decoration: none;
-  box-shadow: var(--shadow);
 }
 
 .book:hover {
-  color: var(--paper);
-  background: var(--accent);
-  border-color: var(--accent);
+  color: var(--blood-deep);
+  background: #fff8ee;
+  border-color: #fff8ee;
 }
 
 .repo {

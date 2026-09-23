@@ -1,9 +1,13 @@
 {
   "name": "jobfiend",
   "compatibility_date": "2024-09-06",
+  "workers_dev": true,
   "main": "./worker/index.ts",
   "assets": {
     "directory": "./dist",
     "binding": "ASSETS"
-  }
+  },
+  "routes": [
+    { "pattern": "jobfiend.io", "custom_domain": true }
+  ]
 }
