@@ -50,8 +50,19 @@ body {
 
 .hero {
   position: relative;
-  margin-bottom: var(--space-12);
-  padding-top: var(--space-8);
+  width: 100vw;
+  margin: 0 0 var(--space-12);
+  margin-left: calc(50% - 50vw);
+  padding: var(--space-8) 1.25rem 0;
+}
+
+.hero-grid {
+  width: min(72rem, 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 44%);
+  gap: var(--space-8);
+  align-items: center;
 }
 
 .hero-copy {
@@ -81,10 +92,36 @@ body {
 .walker {
   position: absolute;
   top: -2rem;
-  right: calc(50% - 50vw - 4rem);
-  width: 22rem;
+  right: -1.5rem;
+  width: 10rem;
   height: auto;
   transform: rotate(-1.8deg);
+}
+
+@media (min-width: 40rem) {
+  .walker {
+    display: none;
+  }
+}
+
+.walker-steps {
+  display: none;
+}
+
+@media (min-width: 90rem) {
+  .steps {
+    position: relative;
+  }
+
+  .walker-steps {
+    display: block;
+    position: absolute;
+    top: -2rem;
+    right: calc(50% - 50vw - 2rem);
+    width: 18rem;
+    height: auto;
+    transform: rotate(-1.8deg);
+  }
 }
 
 .block {
@@ -124,11 +161,11 @@ body {
   background: #fdfeff;
 }
 
-.card:nth-child(odd) {
+.card:nth-of-type(odd) {
   transform: rotate(-0.4deg);
 }
 
-.card:nth-child(even) {
+.card:nth-of-type(even) {
   margin-left: auto;
   transform: rotate(0.4deg);
 }
@@ -159,13 +196,13 @@ body {
   left: 3.4rem;
   width: 4.6rem;
   height: auto;
-  transform: rotate(-2deg);
+  transform: scaleX(-1) rotate(2deg);
 }
 
-.card:nth-child(odd) .connector {
+.card:nth-of-type(odd) .connector {
   left: auto;
   right: 3.4rem;
-  transform: scaleX(-1) rotate(-2deg);
+  transform: rotate(-2deg);
 }
 
 .marker {
@@ -207,7 +244,7 @@ body {
   flex-wrap: wrap;
   gap: var(--space-4) var(--space-6);
   align-items: center;
-  margin: 0 0 4.5rem;
+  margin: var(--space-6) 0 0;
 }
 
 .arrow {
@@ -295,9 +332,62 @@ a:hover {
   color: var(--text);
 }
 
-.demo {
-  margin-top: var(--space-8);
-  padding-top: var(--space-6);
+.hero-media {
+  min-width: 0;
+}
+
+.video-caption {
+  margin: var(--space-3) 0 0;
+  font-size: 0.95rem;
+  color: var(--secondary);
+}
+
+.facade-play {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  cursor: pointer;
+  background: #eef4f9 url('/images/demo-poster.jpg') center / cover no-repeat;
+}
+
+.play-badge {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  display: grid;
+  place-items: center;
+  width: 5.2rem;
+  height: 5.2rem;
+  border-radius: 50%;
+  background: var(--surface);
+  filter: url(#wobble);
+  box-shadow: 0 2px 0 rgba(38, 61, 91, 0.15);
+  transition: transform 130ms ease;
+}
+
+.play-badge svg {
+  width: 1.7rem;
+  height: 1.7rem;
+  margin-left: 0.2rem;
+  fill: var(--secondary);
+}
+
+.facade-play:hover .play-badge {
+  transform: scale(1.08);
+}
+
+.facade-play:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 4px;
+}
+
+@media (max-width: 56rem) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .demo-frame {
@@ -348,12 +438,6 @@ a:hover {
     max-width: none;
   }
 
-  .walker {
-    top: -2.5rem;
-    right: calc(50% - 50vw - 2rem);
-    width: 10rem;
-  }
-
   .arrow {
     display: none;
   }
@@ -367,7 +451,7 @@ a:hover {
     padding: var(--space-4);
   }
 
-  .card:nth-child(even) {
+  .card:nth-of-type(even) {
     margin-left: 0;
   }
 
