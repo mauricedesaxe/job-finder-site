@@ -1,0 +1,256 @@
+---
+const description =
+  "I'll run an automated private job search customized just for you.";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#FFFFFF" />
+    <title>Job Fiend — doodle try</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Delius+Swash+Caps&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary: #49b6e5;
+        --secondary: #263d5b;
+        --surface: #ffffff;
+        --text: #111827;
+        --space-2: 0.5rem;
+        --space-3: 0.75rem;
+        --space-4: 1rem;
+        --space-6: 1.5rem;
+        --space-8: 2rem;
+        --space-12: 3rem;
+      }
+
+      * { box-sizing: border-box; }
+
+      html { background: var(--surface); }
+
+      body {
+        margin: 0;
+        color: var(--text);
+        background: var(--surface);
+        font-family: 'Delius Swash Caps', 'Segoe Script', cursive;
+        font-size: 1.25rem;
+        line-height: 1.7;
+      }
+
+      ::selection {
+        background: var(--primary);
+        color: var(--surface);
+      }
+
+      .sketch {
+        position: absolute;
+        width: 0;
+        height: 0;
+      }
+
+      .page {
+        width: min(40rem, calc(100% - 2.5rem));
+        margin: 0 auto;
+        padding: var(--space-12) 0 5rem;
+      }
+
+      h1 {
+        margin: 0 0 var(--space-3);
+        font-size: clamp(2.75rem, 10vw, 4rem);
+        font-weight: 400;
+        line-height: 1.05;
+      }
+
+      .scribble {
+        display: block;
+        width: min(14rem, 70%);
+        height: 18px;
+        margin: 0 0 var(--space-6);
+      }
+
+      .lede {
+        margin: 0 0 var(--space-6);
+        font-size: 1.45rem;
+        line-height: 1.45;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-4) var(--space-6);
+        align-items: center;
+        margin: 0 0 var(--space-12);
+      }
+
+      .book {
+        display: inline-flex;
+        align-items: center;
+        min-height: 48px;
+        padding: 0.55rem 1.15rem;
+        color: var(--surface);
+        background: var(--secondary);
+        text-decoration: none;
+        filter: url(#wobble);
+      }
+
+      .book:hover { background: #1b2d44; }
+      .book:focus-visible {
+        outline: 3px solid var(--primary);
+        outline-offset: 4px;
+      }
+
+      .repo {
+        color: var(--secondary);
+        text-underline-offset: 0.28em;
+      }
+
+      .copy p {
+        margin: 0 0 var(--space-4);
+      }
+
+      .copy p:last-child { margin-bottom: 0; }
+
+      .arrow {
+        display: block;
+        width: 4.5rem;
+        height: 3rem;
+        margin: var(--space-2) 0 var(--space-3);
+      }
+
+      .demo {
+        margin-top: var(--space-12);
+      }
+
+      .demo-frame {
+        position: relative;
+        overflow: hidden;
+        aspect-ratio: 16 / 9;
+        background: #f3f6f9;
+        filter: url(#wobble);
+      }
+
+      .demo-frame iframe {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
+
+      .note {
+        margin: var(--space-8) 0 0;
+        font-family: 'JetBrains Mono', ui-monospace, monospace;
+        font-size: 0.75rem;
+        letter-spacing: 0.04em;
+        color: var(--secondary);
+      }
+
+      .note a { color: inherit; }
+    </style>
+  </head>
+  <body>
+    <svg class="sketch" aria-hidden="true">
+      <filter id="wobble" x="-8%" y="-8%" width="116%" height="116%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="3" result="n" />
+        <feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" />
+      </filter>
+    </svg>
+    <main class="page">
+      <h1>Job Fiend</h1>
+      <svg class="scribble" viewBox="0 0 220 18" aria-hidden="true">
+        <path
+          d="M2 11 C 28 4, 46 16, 72 9 S 120 17, 148 8 S 196 15, 218 10"
+          fill="none"
+          stroke="#49B6E5"
+          stroke-width="3"
+          stroke-linecap="round"
+        />
+      </svg>
+      <p class="lede">{description}</p>
+      <svg class="arrow" viewBox="0 0 72 48" aria-hidden="true">
+        <path
+          d="M6 8 C 18 28, 34 34, 58 22"
+          fill="none"
+          stroke="#263D5B"
+          stroke-width="2.4"
+          stroke-linecap="round"
+        />
+        <path
+          d="M46 14 L 60 22 L 44 30"
+          fill="none"
+          stroke="#263D5B"
+          stroke-width="2.4"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+      <div class="actions">
+        <a class="book" href="https://cal.com/alexlazar/30-min-meeting">Book a setup</a>
+        <a
+          class="repo"
+          href="https://github.com/mauricedesaxe/job-finder"
+          rel="noopener noreferrer">Github Repo</a
+        >
+      </div>
+      <div class="copy">
+        <p>
+          My system will search for jobs for you every day based on criteria you
+          provided and then put them in a review queue. As you pursue or reject
+          provided jobs, the system learns what you want and gives you more of that.
+        </p>
+        <p>
+          Everything is open source and the system itself, not including its various
+          underlying vendors and providers, is free to use. This means that you can
+          set it up yourself but to abstract that work from you, I offer a limited
+          number of free managed plans.
+        </p>
+        <p>
+          We book a call and I spend time with you learning about you. I want to
+          know about your experiences. I want to know about your needs, wants, and
+          desires. We point the system at your profile while on the call and we look
+          at the first few jobs it finds together.
+        </p>
+        <p>
+          Once we're done with our call, the system should have some degree of
+          understanding about what jobs you want and it should give you more jobs
+          every day. I want you to review them. I want you to give feedback when a
+          job is bad and when a job is good and why.
+        </p>
+        <p>
+          This is the core value exchange I'm asking for from you. My system will
+          absolutely find you jobs once it's past that initial learning phase. I
+          know because it found me jobs that I liked and applied to. But I need to
+          be able to collect this feedback from you to be able to improve the system
+          even further so that more people can benefit from it.
+        </p>
+        <p>
+          As everything stands right now I'm not making any money from this. I'm not
+          charging you. I'm not charging the employer. In fact I'm spending out of
+          pocket on all the vendors and providers underneath the system that will
+          run for you. I do this, of course, not out of the kindness of my soul. I
+          am hoping that as I show this to more people and I gather more feedback, I
+          will eventually be able to turn it into some sort of a commercial project.
+        </p>
+      </div>
+      <div class="demo">
+        <div class="demo-frame">
+          <iframe
+            src="https://www.youtube.com/embed/bO7vzA0xbWg"
+            title="Job Fiend demo"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+            loading="lazy"></iframe>
+        </div>
+      </div>
+      <p class="note"><a href="/">Live poster version</a></p>
+    </main>
+  </body>
+</html>
