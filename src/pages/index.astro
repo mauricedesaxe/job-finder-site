@@ -6,12 +6,30 @@ const description =
   "I'll run an automated private job search customized just for you.";
 
 const steps = [
-  "My system will search for jobs for you every day based on criteria you provided and then put them in a review queue. As you pursue or reject provided jobs, the system learns what you want and gives you more of that.",
-  "Everything is open source and the system itself, not including its various underlying vendors and providers, is free to use. This means that you can set it up yourself but to abstract that work from you, I offer a limited number of free managed plans.",
-  "We book a call and I spend time with you learning about you. I want to know about your experiences. I want to know about your needs, wants, and desires. We point the system at your profile while on the call and we look at the first few jobs it finds together.",
-  "Once we're done with our call, the system should have some degree of understanding about what jobs you want and it should give you more jobs every day. I want you to review them. I want you to give feedback when a job is bad and when a job is good and why.",
-  "This is the core value exchange I'm asking for from you. My system will absolutely find you jobs once it's past that initial learning phase. I know because it found me jobs that I liked and applied to. But I need to be able to collect this feedback from you to be able to improve the system even further so that more people can benefit from it.",
-  "As everything stands right now I'm not making any money from this. I'm not charging you. I'm not charging the employer. In fact I'm spending out of pocket on all the vendors and providers underneath the system that will run for you. I do this, of course, not out of the kindness of my soul. I am hoping that as I show this to more people and I gather more feedback, I will eventually be able to turn it into some sort of a commercial project.",
+  {
+    title: 'How it works',
+    body: "My system will search for jobs for you every day based on criteria you provided and then put them in a review queue. As you pursue or reject provided jobs, the system learns what you want and gives you more of that.",
+  },
+  {
+    title: 'Free and open',
+    body: "Everything is open source and the system itself, not including its various underlying vendors and providers, is free to use. This means that you can set it up yourself but to abstract that work from you, I offer a limited number of free managed plans.",
+  },
+  {
+    title: 'The setup call',
+    body: "We book a call and I spend time with you learning about you. I want to know about your experiences. I want to know about your needs, wants, and desires. We point the system at your profile while on the call and we look at the first few jobs it finds together.",
+  },
+  {
+    title: 'Daily reviews',
+    body: "Once we're done with our call, the system should have some degree of understanding about what jobs you want and it should give you more jobs every day. I want you to review them. I want you to give feedback when a job is bad and when a job is good and why.",
+  },
+  {
+    title: 'The value exchange',
+    body: "This is the core value exchange I'm asking for from you. My system will absolutely find you jobs once it's past that initial learning phase. I know because it found me jobs that I liked and applied to. But I need to be able to collect this feedback from you to be able to improve the system even further so that more people can benefit from it.",
+  },
+  {
+    title: "Why it's free",
+    body: "As everything stands right now I'm not making any money from this. I'm not charging you. I'm not charging the employer. In fact I'm spending out of pocket on all the vendors and providers underneath the system that will run for you. I do this, of course, not out of the kindness of my soul. I am hoping that as I show this to more people and I gather more feedback, I will eventually be able to turn it into some sort of a commercial project.",
+  },
 ];
 
 const circlePath =
@@ -21,6 +39,13 @@ const circlePath =
 <PageLayout title={title} description={description} canonicalPath="/">
   <main class="page">
     <header class="hero">
+      <img
+        class="walker"
+        src="/images/job-fiend-walking.png"
+        alt="The Job Fiend character walking, looking back over her shoulder."
+        width="500"
+        height="500"
+      />
       <div class="hero-copy">
         <h1>{title}</h1>
         <svg class="scribble" viewBox="0 0 220 18" aria-hidden="true">
@@ -34,13 +59,6 @@ const circlePath =
         </svg>
         <p class="lede">{description}</p>
       </div>
-      <img
-        class="walker"
-        src="/images/job-fiend-walking.png"
-        alt="The Job Fiend character walking, looking back over her shoulder."
-        width="500"
-        height="500"
-      />
     </header>
 
     <div class="actions">
@@ -69,7 +87,7 @@ const circlePath =
       >
     </div>
 
-    {steps.map((body, i) => (
+    {steps.map((step, i) => (
       <section class="block">
         <span class="marker" aria-hidden="true">
           <svg viewBox="0 0 40 40">
@@ -84,7 +102,10 @@ const circlePath =
           </svg>
           <span class="marker-n">{i + 1}</span>
         </span>
-        <p>{body}</p>
+        <div class="block-body">
+          <h2>{step.title}</h2>
+          <p>{step.body}</p>
+        </div>
       </section>
     ))}
 

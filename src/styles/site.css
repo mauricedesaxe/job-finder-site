@@ -18,12 +18,14 @@
 
 html {
   background: var(--surface);
+  overflow-x: clip;
 }
 
 body {
   margin: 0;
   color: var(--text);
   background: var(--surface);
+  overflow-x: clip;
   font-family: 'Delius Swash Caps', 'Segoe Script', cursive;
   font-size: 1.125rem;
   line-height: 1.75;
@@ -47,11 +49,12 @@ body {
 }
 
 .hero {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) min(15rem, 42%);
-  gap: var(--space-6);
-  align-items: end;
+  position: relative;
   margin-bottom: var(--space-8);
+}
+
+.hero-copy {
+  max-width: 36rem;
 }
 
 .hero-copy h1 {
@@ -75,8 +78,10 @@ body {
 }
 
 .walker {
-  display: block;
-  width: 100%;
+  position: absolute;
+  top: -1.5rem;
+  right: calc(50% - 50vw - 3rem);
+  width: 19rem;
   height: auto;
   transform: rotate(-1.8deg);
 }
@@ -91,6 +96,14 @@ body {
 
 .block p {
   margin: 0;
+}
+
+.block-body h2 {
+  margin: 0 0 var(--space-2);
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: var(--secondary);
+  line-height: 1.3;
 }
 
 .marker {
@@ -267,13 +280,14 @@ a:hover {
 }
 
 @media (max-width: 40rem) {
-  .hero {
-    grid-template-columns: 1fr;
+  .hero-copy {
+    max-width: none;
   }
 
   .walker {
-    max-width: 16rem;
-    margin: 0 auto;
+    top: -2rem;
+    right: calc(50% - 50vw - 2rem);
+    width: 8.5rem;
   }
 
   .arrow {
