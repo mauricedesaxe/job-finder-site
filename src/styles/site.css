@@ -2,8 +2,15 @@
   --blood: #4a1018;
   --blood-deep: #2a070c;
   --cream: #f3e6d0;
-  --cream-dim: #d4c4ae;
-  --rule: rgb(243 230 208 / 0.28);
+  --cream-dim: #e2d0b8;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
 }
 
 * {
@@ -14,11 +21,20 @@ html {
   scroll-behavior: auto;
 }
 
+::selection {
+  background: var(--cream);
+  color: var(--blood);
+}
+
 body {
   margin: 0;
   background: var(--blood);
   color: var(--cream);
   font-family: 'Newsreader', Georgia, 'Times New Roman', serif;
+  font-size: 1.125rem;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
 }
 
 a {
@@ -37,16 +53,8 @@ a:focus-visible {
 }
 
 .poster {
-  margin: 0;
-}
-
-.poster img {
-  display: block;
-  width: 100%;
-  height: auto;
-  max-height: 92vh;
-  object-fit: cover;
-  object-position: center top;
+  max-width: min(40rem, 100%);
+  margin: 0 auto;
 }
 
 .poster h1 {
@@ -58,17 +66,33 @@ a:focus-visible {
   white-space: nowrap;
 }
 
-main {
-  width: min(720px, calc(100% - 2.5rem));
-  margin: 0 auto;
-  padding: clamp(2rem, 6vw, 4.5rem) 0 5rem;
+.poster img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
-.lede,
+main {
+  width: min(38rem, calc(100% - 2.5rem));
+  margin: 0 auto;
+  padding: var(--space-12) 0 var(--space-16);
+}
+
+.lede {
+  margin: 0 0 var(--space-6);
+  font-size: 1.45rem;
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: 0;
+}
+
+.copy {
+  margin-top: var(--space-12);
+}
+
 .copy p {
-  margin: 0 0 1.1rem;
-  font-size: 1.15rem;
-  line-height: 1.55;
+  margin: 0 0 var(--space-4);
+  max-width: 38rem;
 }
 
 .copy p:last-child {
@@ -76,14 +100,13 @@ main {
 }
 
 .demo {
-  margin: 2rem 0;
+  margin: var(--space-12) 0 0;
 }
 
 .demo-frame {
   position: relative;
   overflow: hidden;
   aspect-ratio: 16 / 9;
-  border: 1px solid var(--rule);
   background: var(--blood-deep);
 }
 
@@ -98,21 +121,22 @@ main {
 .actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.85rem 1.25rem;
+  gap: var(--space-4) var(--space-6);
   align-items: center;
-  margin: 2rem 0 0;
+  margin: 0;
 }
 
 .book {
   display: inline-flex;
   align-items: center;
   min-height: 44px;
-  padding: 0.65rem 1.1rem;
+  padding: 0.7rem 1.15rem;
   border: 1px solid var(--cream);
   background: var(--cream);
   color: var(--blood);
-  font-family: 'DM Mono', ui-monospace, monospace;
-  font-size: 0.92rem;
+  font-family: inherit;
+  font-size: 1.05rem;
+  font-weight: 500;
   text-decoration: none;
 }
 
@@ -123,6 +147,11 @@ main {
 }
 
 .repo {
-  font-family: 'DM Mono', ui-monospace, monospace;
-  font-size: 0.92rem;
+  font-size: 1.05rem;
+}
+
+@media (max-width: 40rem) {
+  .lede {
+    font-size: 1.28rem;
+  }
 }
