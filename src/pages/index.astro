@@ -107,29 +107,50 @@ const circlePath =
       >
     </div>
 
-    {steps.map((step, i) => (
-      <section class="block">
-        <span class="marker" aria-hidden="true">
-          <svg viewBox="0 0 40 40">
-            <path
-              d={circlePath}
-              fill="none"
-              stroke="#263D5B"
-              stroke-width="2"
-              stroke-linecap="round"
-              filter="url(#wobble)"
-            />
-          </svg>
-          <span class="marker-n">{i + 1}</span>
-        </span>
-        <div class="block-body">
-          <h2>{step.title}</h2>
-          {step.paragraphs.map((paragraph) => (
-            <p class="sub">{paragraph}</p>
-          ))}
-        </div>
-      </section>
-    ))}
+    <div class="steps">
+      {steps.map((step, i) => (
+        <section class="block card">
+          {i > 0 && (
+            <svg class="connector" viewBox="0 0 110 64" aria-hidden="true">
+              <path
+                d="M100 8 C 68 2, 34 14, 18 44"
+                fill="none"
+                stroke="#49B6E5"
+                stroke-width="3"
+                stroke-linecap="round"
+              />
+              <path
+                d="M28 36 L 16 47 L 31 51"
+                fill="none"
+                stroke="#49B6E5"
+                stroke-width="3"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          )}
+          <span class="marker" aria-hidden="true">
+            <svg viewBox="0 0 40 40">
+              <path
+                d={circlePath}
+                fill="none"
+                stroke="#263D5B"
+                stroke-width="2"
+                stroke-linecap="round"
+                filter="url(#wobble)"
+              />
+            </svg>
+            <span class="marker-n">{i + 1}</span>
+          </span>
+          <div class="block-body">
+            <h2>{step.title}</h2>
+            {step.paragraphs.map((paragraph) => (
+              <p class="sub">{paragraph}</p>
+            ))}
+          </div>
+        </section>
+      ))}
+    </div>
 
     <section class="demo">
       <div class="demo-frame">
