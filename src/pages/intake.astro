@@ -1,0 +1,238 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+
+const title = 'Book your setup — Job Fiend';
+const description =
+  'A short intake so the setup call spends its time on you, not on paperwork.';
+---
+
+<PageLayout title={title} description={description} canonicalPath="/intake">
+  <main class="page intake">
+    <header class="intake-hero">
+      <h1>Before we book your call</h1>
+      <svg class="scribble" viewBox="0 0 220 18" aria-hidden="true">
+        <path
+          d="M2 11 C 28 4, 46 16, 72 9 S 120 17, 148 8 S 196 15, 218 10"
+          fill="none"
+          stroke="#49B6E5"
+          stroke-width="3"
+          stroke-linecap="round"></path>
+      </svg>
+      <p class="lede">
+        Three quick questions so the call spends its time on you instead of on
+        paperwork.
+      </p>
+    </header>
+
+    <p class="whofor">
+      <strong>Who this works best for:</strong> software engineers with a couple
+      of years of experience, based in Europe or North America — that's where
+      direct remote hiring with US and EU companies is most realistic today.
+      Everyone else is welcome on the waitlist while the system proves itself
+      in more regions.
+    </p>
+
+    <form class="intake-form" id="intake">
+      <fieldset>
+        <legend>1 · Where are you in your career?</legend>
+        <label><input type="radio" name="level" value="junior" /> Junior</label>
+        <label><input type="radio" name="level" value="mid" checked /> Mid-level</label>
+        <label>
+          <input type="radio" name="level" value="senior" /> Senior or above
+        </label>
+      </fieldset>
+
+      <fieldset>
+        <legend>2 · Where are you based?</legend>
+        <label><input type="radio" name="region" value="eu" checked /> Europe</label>
+        <label>
+          <input type="radio" name="region" value="na" /> North America
+        </label>
+        <label>
+          <input type="radio" name="region" value="other" /> Somewhere else
+        </label>
+      </fieldset>
+
+      <label class="wide">
+        <span class="q">3 · What are you looking for?</span>
+        <textarea
+          name="looking"
+          rows="3"
+          placeholder="Roles, stack, constraints — anything that helps the search."></textarea>
+      </label>
+    </form>
+
+    <div class="verdict" id="verdict" aria-live="polite">
+      <!-- filled by the script -->
+    </div>
+
+    <template id="fit">
+      <h2>You're who this is built for.</h2>
+      <p>
+        Book the setup call and we'll point the system at your profile, live.
+      </p>
+      <a class="book book-big" href="https://cal.com/alexlazar/30-min-meeting"
+        >Book a setup</a
+      >
+    </template>
+
+    <template id="waitlist-junior">
+      <h2>Join the waitlist — here's why</h2>
+      <p>
+        The system steers by reading your profile, and it needs some experience
+        on yours to steer well. I'm opening spots gradually as it proves
+        itself. Leave your email and you're in line.
+      </p>
+      <div class="waitlist-row">
+        <input type="email" placeholder="you@example.com" aria-label="Email" />
+        <button class="book" type="button">Join the waitlist</button>
+      </div>
+    </template>
+
+    <template id="waitlist-region">
+      <h2>Join the waitlist — here's why</h2>
+      <p>
+        Remote hiring paths where you are don't line up with US and EU
+        companies as directly yet, so the system can't help you as much as it
+        would a engineer in Poland, Germany, or Canada. That's a roadmap item,
+        not a no. Leave your email and you're in line.
+      </p>
+      <div class="waitlist-row">
+        <input type="email" placeholder="you@example.com" aria-label="Email" />
+        <button class="book" type="button">Join the waitlist</button>
+      </div>
+    </template>
+  </main>
+</PageLayout>
+
+<script>
+  const form = document.getElementById('intake') as HTMLFormElement;
+  const verdict = document.getElementById('verdict') as HTMLElement;
+
+  function route() {
+    const data = new FormData(form);
+    const level = (data.get('level') as string) ?? 'mid';
+    const region = (data.get('region') as string) ?? 'eu';
+    const id = level === 'junior' ? 'waitlist-junior' : region === 'other' ? 'waitlist-region' : 'fit';
+    const tpl = document.getElementById(id) as HTMLTemplateElement;
+    verdict.replaceChildren(tpl.content.cloneNode(true));
+  }
+
+  form.addEventListener('change', route);
+  route();
+</script>
+
+<style>
+  .intake {
+    max-width: 36rem;
+  }
+
+  .intake-hero h1 {
+    margin: 0 0 var(--space-3);
+    font-size: clamp(2.2rem, 7vw, 3.2rem);
+    font-weight: 400;
+    line-height: 1.1;
+  }
+
+  .scribble {
+    display: block;
+    width: min(12rem, 60%);
+    margin: 0 0 var(--space-4);
+  }
+
+  .lede {
+    margin: 0;
+    font-size: 1.3rem;
+  }
+
+  .whofor {
+    margin: var(--space-6) 0 0;
+    padding: var(--space-4) var(--space-5);
+    background: #f2f8fc;
+    border-radius: var(--sketch-radius);
+    font-size: 1rem;
+  }
+
+  .intake-form {
+    margin-top: var(--space-8);
+    display: grid;
+    gap: var(--space-6);
+  }
+
+  fieldset {
+    border: 0;
+    padding: 0;
+    margin: 0;
+  }
+
+  legend,
+  .q {
+    display: block;
+    font-size: 1.15rem;
+    color: var(--secondary);
+    margin-bottom: var(--space-3);
+  }
+
+  label {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.45rem 0;
+    cursor: pointer;
+  }
+
+  input[type='radio'] {
+    accent-color: var(--secondary);
+    width: 1.1rem;
+    height: 1.1rem;
+  }
+
+  .wide {
+    display: block;
+  }
+
+  textarea {
+    width: 100%;
+    font: inherit;
+    color: inherit;
+    padding: 0.7rem 0.9rem;
+    border: 2px solid #a8d6ef;
+    border-radius: 18px 4px 16px 4px / 4px 16px 4px 18px;
+    background: #fdfeff;
+  }
+
+  .verdict {
+    margin-top: var(--space-8);
+    padding: var(--space-6);
+    border: 2px solid #a8d6ef;
+    border-radius: var(--sketch-radius);
+    background: #fdfeff;
+  }
+
+  .verdict h2 {
+    margin: 0 0 var(--space-2);
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--secondary);
+  }
+
+  .verdict p {
+    margin: 0 0 var(--space-5);
+  }
+
+  .waitlist-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    align-items: stretch;
+  }
+
+  .waitlist-row input[type='email'] {
+    flex: 1 1 14rem;
+    font: inherit;
+    padding: 0.55rem 0.9rem;
+    border: 2px solid #a8d6ef;
+    border-radius: 14px 4px 14px 4px / 4px 14px 4px 14px;
+    background: #fff;
+  }
+</style>
