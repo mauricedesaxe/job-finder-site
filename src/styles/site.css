@@ -79,11 +79,38 @@ body {
 
 .walker {
   position: absolute;
-  top: -1.5rem;
-  right: calc(50% - 50vw - 3rem);
+  top: 0;
+  left: calc(50% - 50vw - 11rem);
   width: 19rem;
   height: auto;
   transform: rotate(-1.8deg);
+  animation: walker-bob 2.2s ease-in-out infinite;
+}
+
+@keyframes walker-bob {
+  0%,
+  100% {
+    transform: rotate(-1.8deg) translateY(0);
+  }
+
+  50% {
+    transform: rotate(-1.8deg) translateY(-5px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .walker {
+    animation: none;
+  }
+}
+
+/* No room beside the copy on smaller screens - tuck her into the corner */
+@media (max-width: 64rem) {
+  .walker {
+    top: -1.5rem;
+    left: auto;
+    right: calc(50% - 50vw - 3rem);
+  }
 }
 
 .block {
