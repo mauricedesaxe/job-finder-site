@@ -9,7 +9,7 @@ interface Props {
 
 const { title, description, canonicalPath } = Astro.props;
 const canonicalUrl = new URL(canonicalPath, Astro.site ?? 'https://jobfiend.io').toString();
-const ogImageUrl = new URL('/images/job-fiend-walking.jpg', Astro.site ?? 'https://jobfiend.io').toString();
+const ogImageUrl = new URL('/images/job-fiend-walking.png', Astro.site ?? 'https://jobfiend.io').toString();
 ---
 
 <!doctype html>

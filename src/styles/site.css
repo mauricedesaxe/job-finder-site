@@ -77,8 +77,18 @@ body {
   display: block;
   width: 100%;
   height: auto;
-  transform: rotate(-2.4deg);
-  filter: url(#wobble);
+  transform: rotate(-1.8deg);
+}
+
+.block {
+  padding: var(--space-8) 0;
+  border-top: 2px solid transparent;
+  border-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='8' viewBox='0 0 220 8'%3E%3Cpath d='M1 5 C 30 1, 50 7, 80 4 S 140 7, 180 3 S 210 6, 219 4' fill='none' stroke='%2349B6E5' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E")
+    2 0 0 0 / 2px 0 0 0 stretch;
+}
+
+.block p {
+  margin: 0;
 }
 
 .actions {
@@ -122,16 +132,9 @@ a:hover {
   color: var(--text);
 }
 
-.copy p {
-  margin: 0 0 var(--space-4);
-}
-
-.copy p:last-child {
-  margin-bottom: 0;
-}
-
 .demo {
-  margin-top: var(--space-12);
+  margin-top: var(--space-8);
+  padding-top: var(--space-8);
 }
 
 .demo-frame {
