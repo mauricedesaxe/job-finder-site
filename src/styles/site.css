@@ -111,6 +111,63 @@ body {
   margin-top: var(--space-6);
 }
 
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 3.4rem;
+}
+
+.card {
+  position: relative;
+  width: min(100%, 33rem);
+  padding: var(--space-6);
+  background: #fdfeff;
+}
+
+.card:nth-child(odd) {
+  transform: rotate(-0.4deg);
+}
+
+.card:nth-child(even) {
+  margin-left: auto;
+  transform: rotate(0.4deg);
+}
+
+.card::before,
+.card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 2px solid #a8d6ef;
+  border-radius: var(--sketch-radius);
+  filter: url(#wobble);
+  pointer-events: none;
+}
+
+.card::after {
+  border-color: #dcedf8;
+  transform: translate(5px, 6px);
+}
+
+.card h2 {
+  font-size: 1.5rem;
+}
+
+.connector {
+  position: absolute;
+  top: -3.2rem;
+  left: 3.4rem;
+  width: 4.6rem;
+  height: auto;
+  transform: rotate(-2deg);
+}
+
+.card:nth-child(odd) .connector {
+  left: auto;
+  right: 3.4rem;
+  transform: scaleX(-1) rotate(-2deg);
+}
+
 .marker {
   position: relative;
   display: block;
@@ -304,6 +361,22 @@ a:hover {
   .block {
     grid-template-columns: 2.2rem minmax(0, 1fr);
     gap: var(--space-3);
+  }
+
+  .card {
+    padding: var(--space-4);
+  }
+
+  .card:nth-child(even) {
+    margin-left: 0;
+  }
+
+  .card h2 {
+    font-size: 1.35rem;
+  }
+
+  .connector {
+    display: none;
   }
 
   .marker {
