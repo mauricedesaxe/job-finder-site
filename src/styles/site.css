@@ -51,7 +51,7 @@ body {
 .hero {
   position: relative;
   width: 100vw;
-  margin: 0 0 6rem;
+  margin: 0 0 9rem;
   margin-left: calc(50% - 50vw);
   padding: var(--space-8) 1.25rem 0;
 }
@@ -151,7 +151,7 @@ body {
 .steps {
   display: flex;
   flex-direction: column;
-  gap: 4.75rem;
+  gap: 6.5rem;
 }
 
 .card {
@@ -192,7 +192,7 @@ body {
 
 .connector {
   position: absolute;
-  top: -4.2rem;
+  top: -5.4rem;
   left: 3.4rem;
   width: 4.6rem;
   height: auto;
