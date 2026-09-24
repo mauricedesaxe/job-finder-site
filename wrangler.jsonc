@@ -11,7 +11,7 @@
     {
       "binding": "DB",
       "database_name": "jobfiend-signups",
-      "database_id": "00000000-0000-0000-0000-000000000000",
+      "database_id": "46da9da0-29b3-4e3f-93fb-f54b9d718a95",
       "migrations_dir": "migrations"
     }
   ],
