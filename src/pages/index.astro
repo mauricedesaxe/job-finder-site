@@ -239,6 +239,10 @@ const circlePath =
             rows="5"
             placeholder="The types of role, stack, compensation, time zone, or other constraints that you're looking for would be useful to know."></textarea>
         </label>
+
+        <div class="hp" aria-hidden="true">
+          <label>Leave this field empty <input type="text" name="website" tabindex="-1" autocomplete="off" /></label>
+        </div>
       </form>
       <div class="verdict" id="verdict" aria-live="polite"></div>
 
@@ -305,16 +309,129 @@ const circlePath =
   const form = document.getElementById('intake-form') as HTMLFormElement;
   const verdict = document.getElementById('verdict') as HTMLElement;
 
+  const LEVEL_LABEL: Record<string, string> = {
+    junior: 'Junior',
+    mid: 'Mid-level',
+    senior: 'Senior or above',
+  };
+  const REGION_LABEL: Record<string, string> = {
+    eu: 'Europe',
+    na: 'North America',
+    other: 'Somewhere else',
+  };
+  const EMAIL_RE = /^\S+@\S+\.\S+$/;
+
+  function readIntake() {
+    const data = new FormData(form);
+    return {
+      level: (data.get('level') as string) ?? 'mid',
+      region: (data.get('region') as string) ?? 'eu',
+      looking: ((data.get('looking') as string) ?? '').trim(),
+      website: (data.get('website') as string) ?? '',
+    };
+  }
+
+  function postIntake(payload: Record<string, string>) {
+    return fetch('/api/intake', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(payload),
+      keepalive: true,
+    });
+  }
+
+  function showWaitlistError(row: Element, message: string) {
+    let error = row.nextElementSibling;
+    if (!error || !error.classList.contains('waitlist-error')) {
+      error = document.createElement('p');
+      error.className = 'waitlist-error';
+      error.setAttribute('role', 'alert');
+      row.after(error);
+    }
+    error.textContent = message;
+  }
+
+  // The verdict only depends on the two radios. Re-rendering it on text-field
+  // changes detaches the action mid-click (mousedown blurs the field, the
+  // change re-render eats the click), so route on radios only.
+  let currentId: string | null = null;
+  let savedEmail = '';
+
   function route() {
     const data = new FormData(form);
     const level = (data.get('level') as string) ?? 'mid';
     const region = (data.get('region') as string) ?? 'eu';
     const id =
       level === 'junior' ? 'waitlist-junior' : region === 'other' ? 'waitlist-region' : 'fit';
+    if (id === currentId) return;
+    currentId = id;
     const tpl = document.getElementById(id) as HTMLTemplateElement;
-    verdict.replaceChildren(tpl.content.cloneNode(true));
+    const frag = tpl.content.cloneNode(true) as DocumentFragment;
+    if (savedEmail) {
+      frag.querySelectorAll<HTMLInputElement>('input[type="email"]').forEach((input) => {
+        input.value = savedEmail;
+      });
+    }
+    verdict.replaceChildren(frag);
   }
 
-  form.addEventListener('change', route);
+  form.addEventListener('change', (event) => {
+    if ((event.target as HTMLInputElement).type === 'radio') route();
+  });
+  verdict.addEventListener('input', (event) => {
+    if ((event.target as HTMLElement).matches('input[type="email"]')) {
+      savedEmail = (event.target as HTMLInputElement).value;
+    }
+  });
   route();
+
+  verdict.addEventListener('click', async (event) => {
+    const target = event.target as HTMLElement;
+
+    const bookLink = target.closest<HTMLAnchorElement>('a.book-big');
+    if (bookLink) {
+      event.preventDefault();
+      const { level, region, looking, website } = readIntake();
+      const notes = [
+        'From the Job Fiend intake form:',
+        `Career level: ${LEVEL_LABEL[level] ?? level}`,
+        `Based in: ${REGION_LABEL[region] ?? region}`,
+        looking ? `Looking for: ${looking}` : null,
+      ]
+        .filter(Boolean)
+        .join('\n');
+      const url = `${bookLink.origin}${bookLink.pathname}?notes=${encodeURIComponent(notes)}`;
+      // Never block the booking on the store; keepalive lets it land in flight.
+      postIntake({ status: 'booking', level, region, looking, website }).catch(() => {});
+      window.location.assign(url);
+      return;
+    }
+
+    const button = target.closest<HTMLButtonElement>('.waitlist-row button');
+    if (!button) return;
+
+    const row = button.closest('.waitlist-row') as HTMLElement;
+    const input = row.querySelector('input[type="email"]') as HTMLInputElement;
+    const email = input.value.trim();
+    if (!EMAIL_RE.test(email)) {
+      input.focus();
+      showWaitlistError(row, 'That email looks off — mind checking it?');
+      return;
+    }
+
+    button.disabled = true;
+    const { level, region, looking, website } = readIntake();
+    try {
+      const response = await postIntake({ status: 'waitlist', email, level, region, looking, website });
+      if (!response.ok) throw new Error(String(response.status));
+      const ok = document.createElement('p');
+      ok.className = 'waitlist-ok';
+      ok.textContent = "You're on the list. If this opens up, yours will be among the first doors I knock on.";
+      row.replaceWith(ok);
+      verdict.querySelector('.waitlist-error')?.remove();
+    } catch {
+      button.disabled = false;
+      showWaitlistError(row, "That didn't go through — try again?");
+    }
+  });
 </script>
