@@ -106,9 +106,9 @@ body {
 .card:nth-of-type(1) .card-img {
   top: -2rem;
   right: auto;
-  left: -9.5rem;
-  width: 10rem;
-  transform: scaleX(-1) rotate(2deg);
+  left: -11rem;
+  width: 11.5rem;
+  transform: rotate(-2deg);
 }
 
 .card:nth-of-type(even) .card-img {
@@ -130,18 +130,18 @@ body {
 
 .walker-intake {
   position: absolute;
-  top: -5.5rem;
+  top: -3.5rem;
   left: -1.5rem;
-  width: 8rem;
+  width: 9rem;
   height: auto;
   transform: scaleX(-1) rotate(1.8deg);
 }
 
 @media (min-width: 90rem) {
   .walker-intake {
-    top: -5.5rem;
-    left: calc(18.75rem - 50vw);
-    width: 11.5rem;
+    top: -2rem;
+    left: calc(19rem - 50vw);
+    width: 22rem;
     transform: scaleX(-1) rotate(1.8deg);
   }
 }
