@@ -90,38 +90,59 @@ body {
   line-height: 1.5;
 }
 
-.walker {
+.card-img {
   position: absolute;
-  top: -2rem;
-  right: -1.5rem;
-  width: 10rem;
+  z-index: 1;
   height: auto;
-  transform: rotate(-1.8deg);
 }
 
-@media (min-width: 40rem) {
-  .walker {
+.card:nth-of-type(odd) .card-img {
+  top: -3rem;
+  right: -8.5rem;
+  width: 10rem;
+  transform: rotate(-2.5deg);
+}
+
+.card:nth-of-type(1) .card-img {
+  top: -2rem;
+  right: auto;
+  left: -11rem;
+  width: 11.5rem;
+  transform: rotate(-2deg);
+}
+
+.card:nth-of-type(even) .card-img {
+  bottom: -1.5rem;
+  left: -9rem;
+  width: 9rem;
+  transform: rotate(2deg);
+}
+
+@media (max-width: 80rem) {
+  .card-img {
     display: none;
   }
 }
 
-.walker-steps {
-  display: none;
+.intake {
+  position: relative;
 }
 
-@media (min-width: 90rem) {
-  .steps {
-    position: relative;
-  }
+.call-img {
+  display: block;
+  width: 11rem;
+  height: auto;
+  margin: 0 auto var(--space-6);
+  transform: rotate(-1.5deg);
+}
 
-  .walker-steps {
-    display: block;
+@media (min-width: 80rem) {
+  .call-img {
     position: absolute;
-    top: -2rem;
-    right: calc(50% - 50vw - 2rem);
-    width: 18rem;
-    height: auto;
-    transform: rotate(-1.8deg);
+    top: -2.75rem;
+    right: -14rem;
+    width: 12.5rem;
+    transform: rotate(-6deg);
   }
 }
 
