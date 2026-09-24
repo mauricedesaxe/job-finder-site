@@ -19,15 +19,12 @@ const description =
           stroke-linecap="round"></path>
       </svg>
       <p class="lede">
-        Three questions first. Then the call is about you.
+        I don't want to waste your time. For the system to work well for you
+        (in its current state) it would be best if you had at least a couple of
+        years of experience and if you are based in Europe or North America. If
+        that's not you, sign up for the waitlist.
       </p>
     </header>
-
-    <p class="whofor">
-      <strong>Best fit right now:</strong> engineers with a couple of years in,
-      based in Europe or North America. Remote hiring with US and EU companies
-      happens there. If that's not you, answer anyway.
-    </p>
 
     <form class="intake-form" id="intake">
       <fieldset>
@@ -54,8 +51,8 @@ const description =
         <span class="q">3 · What are you looking for?</span>
         <textarea
           name="looking"
-          rows="3"
-          placeholder="Roles, stack, constraints — anything that helps the search."></textarea>
+          rows="5"
+          placeholder="The types of role, stack, compensation, time zone, or other constraints that you're looking for would be useful to know."></textarea>
       </label>
     </form>
 
@@ -77,29 +74,29 @@ const description =
     <template id="waitlist-junior">
       <h2>Not yet.</h2>
       <p>
-        The system learns what you want by watching which jobs you keep and
-        which you reject. That takes a few years of work history to read well.
-        I'm letting people in gradually. Leave your email and you're in line.
+        I'm not offering the white-glove experience to junior developers just
+        yet. Feel free to use the open-source version of the system yourself
+        and put your email in to get updates.
       </p>
       <div class="waitlist-row">
         <input type="email" placeholder="you@example.com" aria-label="Email" />
         <button class="book" type="button">Join the waitlist</button>
       </div>
-      <p class="waitlist-note">One email when a spot opens. That's all.</p>
+      <p class="waitlist-note">Product updates if I get traction and decide to take this project further.</p>
     </template>
 
     <template id="waitlist-region">
       <h2>Not here yet.</h2>
       <p>
-        Remote hiring where you are doesn't reach US and EU companies the way
-        it does in Poland, Germany, or Canada. The system can't do much for you
-        yet. Leave your email and you're in line when your region opens.
+        I'm not offering the White Club experience to people outside of Europe
+        or North America just yet. Feel free to use the open-source version of
+        the system yourself and put your email in to get updates.
       </p>
       <div class="waitlist-row">
         <input type="email" placeholder="you@example.com" aria-label="Email" />
         <button class="book" type="button">Join the waitlist</button>
       </div>
-      <p class="waitlist-note">One email when a spot opens. That's all.</p>
+      <p class="waitlist-note">Product updates if I get traction and decide to take this project further.</p>
     </template>
   </main>
 </PageLayout>
@@ -142,14 +139,6 @@ const description =
   .lede {
     margin: 0;
     font-size: 1.3rem;
-  }
-
-  .whofor {
-    margin: var(--space-6) 0 0;
-    padding: var(--space-4) var(--space-5);
-    background: #f2f8fc;
-    border-radius: var(--sketch-radius);
-    font-size: 1rem;
   }
 
   .intake-form {
