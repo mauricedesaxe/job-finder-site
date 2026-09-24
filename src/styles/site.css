@@ -543,6 +543,14 @@ a:hover {
   background: #fdfeff;
 }
 
+.intake-form .hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
 .verdict {
   margin-top: var(--space-8);
   position: relative;
@@ -601,6 +609,23 @@ a:hover {
   margin: 1.25rem 0 0;
   font-size: 0.9rem;
   color: var(--secondary);
+}
+
+.waitlist-ok {
+  margin: 0;
+  font-size: 1.05rem;
+  color: var(--secondary);
+}
+
+.waitlist-error {
+  margin: 0.75rem 0 0;
+  font-size: 0.9rem;
+  color: #b3552e;
+}
+
+.waitlist-row button:disabled {
+  opacity: 0.6;
+  cursor: wait;
 }
 
 .site-footer {
