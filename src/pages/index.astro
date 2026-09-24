@@ -55,8 +55,8 @@ const steps = [
 const circlePath =
   'M20 3.2 C 30.5 2.2, 37.6 8.8, 37.2 19.6 C 36.8 30.6, 30.2 36.9, 19.8 36.8 C 9.4 36.7, 2.9 30.4, 3.1 19.8 C 3.3 9.6, 9.8 4.2, 20 3.2';
 
-// Step-gap connectors alternate between the two approved hand-drawn forms;
-// card mirroring flips their direction automatically.
+// Five hand-drawn connectors, one per step gap — all in the same flowing
+// curve family (loops and S-sweeps), each drawn a little differently.
 const connectors = [
   {
     // loop-de-loop — the feedback loop
@@ -66,6 +66,21 @@ const connectors = [
   {
     // serpentine — long lazy S
     body: 'M100 6 C 64 -2, 84 28, 52 32 C 26 35, 36 46, 22 46',
+    head: 'M28 36 L 16 47 L 31 51',
+  },
+  {
+    // double loop — keeps learning, loops again
+    body: 'M100 8 C 82 2, 70 4, 64 12 C 59 19, 62 27, 68 25 C 74 23, 73 15, 67 15 C 61 15, 56 22, 52 30 C 50 39, 53 47, 59 44 C 65 41, 63 33, 56 34 C 49 35, 40 40, 24 44',
+    head: 'M28 36 L 16 47 L 31 51',
+  },
+  {
+    // swoop — one deep graceful dive
+    body: 'M100 6 C 66 0, 36 12, 22 40',
+    head: 'M28 36 L 16 47 L 31 51',
+  },
+  {
+    // flourish — high loop, long sweeping tail
+    body: 'M100 10 C 86 2, 74 2, 68 10 C 63 17, 68 25, 74 22 C 80 19, 78 11, 72 12 C 66 13, 58 20, 50 28 C 42 36, 34 42, 24 44',
     head: 'M28 36 L 16 47 L 31 51',
   },
 ];
@@ -138,28 +153,25 @@ const connectors = [
     <div class="steps">
       {steps.map((step, i) => (
         <section class="block card">
-          {i > 0 && (() => {
-            const connector = connectors[(i - 1) % connectors.length];
-            return (
-              <svg class="connector" viewBox="0 0 110 64" aria-hidden="true">
-                <path
-                  d={connector.body}
-                  fill="none"
-                  stroke="#49B6E5"
-                  stroke-width="3"
-                  stroke-linecap="round"
-                />
-                <path
-                  d={connector.head}
-                  fill="none"
-                  stroke="#49B6E5"
-                  stroke-width="3"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-            );
-          })()}
+          {i > 0 && (
+            <svg class="connector" viewBox="0 0 110 64" aria-hidden="true">
+              <path
+                d={connectors[i - 1].body}
+                fill="none"
+                stroke="#49B6E5"
+                stroke-width="3"
+                stroke-linecap="round"
+              />
+              <path
+                d={connectors[i - 1].head}
+                fill="none"
+                stroke="#49B6E5"
+                stroke-width="3"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          )}
           <span class="marker" aria-hidden="true">
             <svg viewBox="0 0 40 40">
               <path
