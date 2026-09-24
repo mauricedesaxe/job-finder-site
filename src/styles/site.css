@@ -140,7 +140,7 @@ body {
 @media (min-width: 90rem) {
   .walker-intake {
     top: -2rem;
-    right: calc(29rem - 50vw);
+    right: calc(12rem - 50vw);
     width: 22rem;
     transform: rotate(-1.8deg);
   }
