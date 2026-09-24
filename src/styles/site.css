@@ -128,22 +128,12 @@ body {
   position: relative;
 }
 
-.walker-intake {
-  position: absolute;
-  top: -3.5rem;
-  right: -1.5rem;
-  width: 9rem;
+.call-img {
+  float: right;
+  width: min(14rem, 45%);
   height: auto;
-  transform: rotate(-1.8deg);
-}
-
-@media (min-width: 90rem) {
-  .walker-intake {
-    top: -2rem;
-    right: calc(12rem - 50vw);
-    width: 22rem;
-    transform: rotate(-1.8deg);
-  }
+  margin: var(--space-2) 0 var(--space-4) var(--space-6);
+  transform: rotate(-1.5deg);
 }
 
 .block {
