@@ -59,13 +59,6 @@ const circlePath =
 <PageLayout title={title} description={description} canonicalPath="/">
   <main class="page">
     <header class="hero">
-      <img
-        class="walker"
-        src="/images/job-fiend-walking.png"
-        alt="The Job Fiend character walking, looking back over her shoulder."
-        width="500"
-        height="500"
-      />
       <div class="hero-grid">
         <div class="hero-copy">
           <h1>{title}</h1>
@@ -126,15 +119,6 @@ const circlePath =
     </header>
 
     <div class="steps">
-      <img
-        class="walker-steps"
-        src="/images/job-fiend-walking.png"
-        alt=""
-        aria-hidden="true"
-        width="500"
-        height="500"
-        loading="lazy"
-      />
       {steps.map((step, i) => (
         <section class="block card">
           {i > 0 && (
@@ -174,12 +158,41 @@ const circlePath =
             {step.paragraphs.map((paragraph) => (
               <p class="sub">{paragraph}</p>
             ))}
+            {i === 0 && (
+              <img
+                class="card-img"
+                src="/images/job-fiend-desk.jpg"
+                alt=""
+                width="1200"
+                height="1200"
+                loading="lazy"
+              />
+            )}
+            {i === 4 && (
+              <img
+                class="card-img"
+                src="/images/job-fiend-sign.webp"
+                alt="A cardboard sign reading: will find you jobs for free"
+                width="1200"
+                height="1200"
+                loading="lazy"
+              />
+            )}
           </div>
         </section>
       ))}
     </div>
 
     <section class="intake" id="intake">
+      <img
+        class="walker-intake"
+        src="/images/job-fiend-walking.png"
+        alt=""
+        aria-hidden="true"
+        width="500"
+        height="500"
+        loading="lazy"
+      />
       <svg class="scribble" viewBox="0 0 220 18" aria-hidden="true">
         <path
           d="M2 11 C 28 4, 46 16, 72 9 S 120 17, 148 8 S 196 15, 218 10"
