@@ -92,20 +92,22 @@ body {
 
 .card-img {
   position: absolute;
-  top: 50%;
-  width: 12rem;
+  z-index: 1;
   height: auto;
-  transform: translateY(-50%) rotate(-2deg);
-  border-radius: 10px;
 }
 
 .card:nth-of-type(odd) .card-img {
-  right: -13.5rem;
+  top: -3rem;
+  right: -8.5rem;
+  width: 10rem;
+  transform: rotate(-2.5deg);
 }
 
 .card:nth-of-type(even) .card-img {
-  left: -13.5rem;
-  transform: translateY(-50%) rotate(2deg);
+  bottom: -1.5rem;
+  left: -9rem;
+  width: 9rem;
+  transform: rotate(2deg);
 }
 
 @media (max-width: 80rem) {
