@@ -129,11 +129,21 @@ body {
 }
 
 .call-img {
-  float: right;
-  width: min(14rem, 45%);
+  display: block;
+  width: 11rem;
   height: auto;
-  margin: var(--space-2) 0 var(--space-4) var(--space-6);
+  margin: 0 auto var(--space-6);
   transform: rotate(-1.5deg);
+}
+
+@media (min-width: 80rem) {
+  .call-img {
+    position: absolute;
+    top: -1.5rem;
+    right: -13rem;
+    width: 12rem;
+    margin: 0;
+  }
 }
 
 .block {
