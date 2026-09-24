@@ -61,17 +61,50 @@ This protocol applies when ending a Beads implementation workflow. It is subordi
 
 ## Build & Test
 
-_Add your build and test commands here_
-
 ```bash
-# Example:
-# npm install
-# npm test
+corepack enable
+yarn install --immutable
+yarn build        # astro check + astro build (the check gate)
+yarn dev          # static site only; the API needs wrangler (below)
+npx wrangler dev  # full stack on :8787 — apply the local schema first:
+npx wrangler d1 migrations apply jobfiend-signups --local
 ```
 
 ## Architecture Overview
 
-_Add a brief overview of your project architecture_
+Astro static site (`src/`) built to `dist/` and served by a Cloudflare Worker
+(`worker/index.ts`) with the `ASSETS` binding. Deploys run in GitHub Actions
+(`.github/workflows/preview.yml`): every PR gets a preview Worker
+(`jobfiend-pr-<N>.<account-subdomain>.workers.dev`), every push to `main`
+deploys production (jobfiend.io). The CI `CLOUDFLARE_API_TOKEN` is scoped to
+Worker deploys only — it cannot create or inspect D1 databases; that needs a
+user OAuth login (`wrangler login`).
+
+### Where the intake data lives
+
+`POST /api/intake` (same Worker) stores **every** intake submit — both
+"Book a setup" intents (status `booking`) and waitlist signups — in the D1
+database `jobfiend-signups`. **This is the source of record for both flows.**
+cal.com booking notes are a convenience copy; nothing about a booking flows
+back from cal.com.
+
+Read submissions:
+
+```bash
+env -u CLOUDFLARE_API_TOKEN npx wrangler d1 execute jobfiend-signups \
+  --remote --command "SELECT * FROM signups ORDER BY created_at DESC"
+```
+
+In this sandbox the `CLOUDFLARE_API_TOKEN` / `CLOUDFLARE_ACCOUNT_ID` env vars
+hold placeholder values that poison wrangler — unset them (`env -u`) so
+wrangler falls back to the stored OAuth login.
+
+Schema (`migrations/0001_signups.sql`): `signups(id, created_at, status
+booking|waitlist, level junior|mid|senior, region eu|na|other, looking, email)`.
+A filled honeypot field (`website`) gets a fake 204 and stores nothing.
+Schema changes go through `wrangler d1 migrations` (`migrations/`): apply
+with `--local` for dev and `--remote` for production after merging the
+migration file.
 
 ## Conventions & Patterns
 

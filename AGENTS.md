@@ -2,6 +2,9 @@
 
 This project uses **bd** (beads) for issue tracking. Run `bd prime` for full workflow context.
 
+> Site data flow, build commands, and how to read intake submissions live in
+> [CLAUDE.md](CLAUDE.md) ("Where the intake data lives").
+
 > **Architecture in one line:** Issues live in a local Dolt database
 > (`.beads/dolt/`); cross-machine sync uses `bd dolt push/pull` (a
 > git-compatible protocol), stored under `refs/dolt/data` on your git
