@@ -266,7 +266,7 @@ body {
   flex-wrap: wrap;
   gap: var(--space-4) var(--space-6);
   align-items: center;
-  margin: var(--space-6) 0 0;
+  margin: 3.25rem 0 0;
 }
 
 .arrow {
