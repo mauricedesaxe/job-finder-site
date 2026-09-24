@@ -396,7 +396,7 @@ const circlePath =
         'From the Job Fiend intake form:',
         `Career level: ${LEVEL_LABEL[level] ?? level}`,
         `Based in: ${REGION_LABEL[region] ?? region}`,
-        looking ? `Looking for: ${looking}` : null,
+        looking ? `Looking for: ${looking.slice(0, 500)}` : null,
       ]
         .filter(Boolean)
         .join('\n');
