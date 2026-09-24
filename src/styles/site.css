@@ -90,38 +90,33 @@ body {
   line-height: 1.5;
 }
 
-.walker {
+.card-img {
+  display: block;
+  width: min(11rem, 55%);
+  height: auto;
+  margin: var(--space-6) auto 0;
+  transform: rotate(-1.5deg);
+  border-radius: 10px;
+}
+
+.intake {
+  position: relative;
+}
+
+.walker-intake {
   position: absolute;
-  top: -2rem;
-  right: -1.5rem;
-  width: 10rem;
+  top: -5.5rem;
+  right: -1rem;
+  width: 6.5rem;
   height: auto;
   transform: rotate(-1.8deg);
 }
 
-@media (min-width: 40rem) {
-  .walker {
-    display: none;
-  }
-}
-
-.walker-steps {
-  display: none;
-}
-
 @media (min-width: 90rem) {
-  .steps {
-    position: relative;
-  }
-
-  .walker-steps {
-    display: block;
-    position: absolute;
-    top: -2rem;
-    right: calc(50% - 50vw - 2rem);
-    width: 18rem;
-    height: auto;
-    transform: rotate(-1.8deg);
+  .walker-intake {
+    top: -5rem;
+    right: -9.5rem;
+    width: 8.5rem;
   }
 }
 
