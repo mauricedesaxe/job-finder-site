@@ -9,7 +9,7 @@ const description =
 <PageLayout title={title} description={description} canonicalPath="/intake">
   <main class="page intake">
     <header class="intake-hero">
-      <h1>Before we book your call</h1>
+      <h1>Book your setup call</h1>
       <svg class="scribble" viewBox="0 0 220 18" aria-hidden="true">
         <path
           d="M2 11 C 28 4, 46 16, 72 9 S 120 17, 148 8 S 196 15, 218 10"
@@ -19,17 +19,17 @@ const description =
           stroke-linecap="round"></path>
       </svg>
       <p class="lede">
-        Three quick questions so the call spends its time on you instead of on
+        Three quick questions first, so the call is about you instead of
         paperwork.
       </p>
     </header>
 
     <p class="whofor">
-      <strong>Who this works best for:</strong> software engineers with a couple
-      of years of experience, based in Europe or North America — that's where
-      direct remote hiring with US and EU companies is most realistic today.
-      Everyone else is welcome on the waitlist while the system proves itself
-      in more regions.
+      <strong>Best fit right now:</strong> engineers with a couple of years
+      behind them, based in Europe or North America — where remote hiring with
+      US and EU companies actually happens. Earlier in your career, or
+      somewhere else in the world? Answer anyway. This page gives it to you
+      straight.
     </p>
 
     <form class="intake-form" id="intake">
@@ -67,9 +67,10 @@ const description =
     </div>
 
     <template id="fit">
-      <h2>You're who this is built for.</h2>
+      <h2>You're exactly who this is for.</h2>
       <p>
-        Book the setup call and we'll point the system at your profile, live.
+        Book the setup call — we'll point the system at your profile and read
+        its first finds together, live.
       </p>
       <a class="book book-big" href="https://cal.com/alexlazar/30-min-meeting"
         >Book a setup</a
@@ -77,30 +78,33 @@ const description =
     </template>
 
     <template id="waitlist-junior">
-      <h2>Join the waitlist — here's why</h2>
+      <h2>The honest answer: not yet.</h2>
       <p>
-        The system steers by reading your profile, and it needs some experience
-        on yours to steer well. I'm opening spots gradually as it proves
-        itself. Leave your email and you're in line.
+        The system learns what you want by watching which jobs you keep and
+        which you reject — and that reading needs a few years of profile to be
+        any good. I'm letting people in gradually as it proves itself. Leave
+        your email and you're in line.
       </p>
       <div class="waitlist-row">
         <input type="email" placeholder="you@example.com" aria-label="Email" />
         <button class="book" type="button">Join the waitlist</button>
       </div>
+      <p class="waitlist-note">One email when a spot opens. That's all it's for.</p>
     </template>
 
     <template id="waitlist-region">
-      <h2>Join the waitlist — here's why</h2>
+      <h2>The honest answer: not here yet.</h2>
       <p>
-        Remote hiring paths where you are don't line up with US and EU
-        companies as directly yet, so the system can't help you as much as it
-        would a engineer in Poland, Germany, or Canada. That's a roadmap item,
-        not a no. Leave your email and you're in line.
+        Remote hiring where you are doesn't reach US and EU companies as
+        directly as it does for an engineer in Poland, Germany, or Canada — so
+        the system can't pull as hard for you today. That's a roadmap item, not
+        a no. Leave your email and you're in line when your region opens.
       </p>
       <div class="waitlist-row">
         <input type="email" placeholder="you@example.com" aria-label="Email" />
         <button class="book" type="button">Join the waitlist</button>
       </div>
+      <p class="waitlist-note">One email when a spot opens. That's all it's for.</p>
     </template>
   </main>
 </PageLayout>
@@ -234,5 +238,11 @@ const description =
     border: 2px solid #a8d6ef;
     border-radius: 14px 4px 14px 4px / 4px 14px 4px 14px;
     background: #fff;
+  }
+
+  .waitlist-note {
+    margin: var(--space-3) 0 0;
+    font-size: 0.9rem;
+    color: var(--secondary);
   }
 </style>
