@@ -539,14 +539,42 @@ a:hover {
   display: block;
 }
 
+.intake-form .sketch-field {
+  position: relative;
+  display: block;
+}
+
+.intake-form .sketch-field::before,
+.intake-form .sketch-field::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 2px solid #a8d6ef;
+  border-radius: var(--sketch-radius);
+  filter: url(#wobble);
+  pointer-events: none;
+}
+
+.intake-form .sketch-field::after {
+  border-color: #dcedf8;
+  transform: translate(5px, 6px);
+}
+
+.intake-form .sketch-field:focus-within::before {
+  border-color: var(--secondary);
+}
+
 .intake-form textarea {
+  position: relative;
+  z-index: 1;
+  display: block;
   width: 100%;
   font: inherit;
   color: inherit;
-  padding: 0.7rem 0.9rem;
-  border: 2px solid #a8d6ef;
-  border-radius: 18px 4px 16px 4px / 4px 16px 4px 18px;
-  background: #fdfeff;
+  padding: 1rem 1rem 0.7rem;
+  border: 0;
+  background: transparent;
+  outline: none;
 }
 
 .intake-form .hp {
