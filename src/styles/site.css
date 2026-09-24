@@ -19,6 +19,7 @@
 html {
   background: var(--surface);
   overflow-x: clip;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -421,18 +422,6 @@ a:hover {
   background: #eef4f9;
 }
 
-.outro {
-  margin-top: var(--space-12);
-}
-
-.outro-scribble {
-  width: min(10rem, 50%);
-}
-
-.outro-actions {
-  margin-bottom: 0;
-}
-
 @media (max-width: 40rem) {
   .hero-copy {
     max-width: none;
@@ -467,6 +456,130 @@ a:hover {
     width: 2rem;
     height: 2rem;
   }
+}
+
+.intake {
+  margin-top: 9rem;
+  max-width: 36rem;
+}
+
+.intake h2 {
+  margin: var(--space-3) 0 0;
+  font-size: 1.9rem;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.intake-lede {
+  margin: var(--space-3) 0 0;
+}
+
+.intake-form {
+  margin-top: var(--space-8);
+  display: grid;
+  gap: var(--space-6);
+}
+
+.intake-form fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.intake-form legend,
+.intake-form .q {
+  display: block;
+  font-size: 1.15rem;
+  color: var(--secondary);
+  margin-bottom: var(--space-3);
+}
+
+.intake-form label {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.45rem 0;
+  cursor: pointer;
+}
+
+.intake-form input[type='radio'] {
+  accent-color: var(--secondary);
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.intake-form .wide {
+  display: block;
+}
+
+.intake-form textarea {
+  width: 100%;
+  font: inherit;
+  color: inherit;
+  padding: 0.7rem 0.9rem;
+  border: 2px solid #a8d6ef;
+  border-radius: 18px 4px 16px 4px / 4px 16px 4px 18px;
+  background: #fdfeff;
+}
+
+.verdict {
+  margin-top: var(--space-8);
+  position: relative;
+  padding: var(--space-6);
+  background: #fdfeff;
+}
+
+.verdict::before,
+.verdict::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 2px solid #a8d6ef;
+  border-radius: var(--sketch-radius);
+  filter: url(#wobble);
+  pointer-events: none;
+}
+
+.verdict::after {
+  border-color: #dcedf8;
+  transform: translate(5px, 6px);
+}
+
+.verdict h3 {
+  margin: 0 0 var(--space-2);
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--secondary);
+}
+
+.verdict p {
+  margin: 0 0 2.5rem;
+}
+
+.verdict .book {
+  margin-bottom: 0.5rem;
+}
+
+.waitlist-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  align-items: stretch;
+}
+
+.waitlist-row input[type='email'] {
+  flex: 1 1 14rem;
+  font: inherit;
+  padding: 0.55rem 0.9rem;
+  border: 2px solid #a8d6ef;
+  border-radius: 14px 4px 14px 4px / 4px 14px 4px 14px;
+  background: #fff;
+}
+
+.waitlist-note {
+  margin: 1.25rem 0 0;
+  font-size: 0.9rem;
+  color: var(--secondary);
 }
 
 .site-footer {

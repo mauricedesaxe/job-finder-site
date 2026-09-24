@@ -97,7 +97,7 @@ const circlePath =
                 stroke-linejoin="round"
               />
             </svg>
-            <a class="book" href="https://cal.com/alexlazar/30-min-meeting">Book a setup</a>
+            <a class="book" href="#intake">Book a setup</a>
             <a
               class="repo"
               href="https://github.com/mauricedesaxe/job-finder"
@@ -179,8 +179,8 @@ const circlePath =
       ))}
     </div>
 
-    <section class="outro">
-      <svg class="scribble outro-scribble" viewBox="0 0 220 18" aria-hidden="true">
+    <section class="intake" id="intake">
+      <svg class="scribble" viewBox="0 0 220 18" aria-hidden="true">
         <path
           d="M2 11 C 28 4, 46 16, 72 9 S 120 17, 148 8 S 196 15, 218 10"
           fill="none"
@@ -189,16 +189,83 @@ const circlePath =
           stroke-linecap="round"
         />
       </svg>
-      <div class="actions outro-actions">
+      <h2>Book your setup call</h2>
+      <p class="intake-lede">
+        I don't want to waste your time nor mine. For the white glove offering
+        to work well for you and be worth it to me, it would be best if you had
+        at least a couple of years of experience and if you are based in Europe
+        or North America. If that's not you, either use the open-source version
+        of the system or sign up for the waitlist.
+      </p>
+      <form class="intake-form" id="intake-form">
+        <fieldset>
+          <legend>1 · Where are you in your career?</legend>
+          <label><input type="radio" name="level" value="junior" /> Junior</label>
+          <label><input type="radio" name="level" value="mid" checked /> Mid-level</label>
+          <label>
+            <input type="radio" name="level" value="senior" /> Senior or above
+          </label>
+        </fieldset>
+
+        <fieldset>
+          <legend>2 · Where are you based?</legend>
+          <label><input type="radio" name="region" value="eu" checked /> Europe</label>
+          <label>
+            <input type="radio" name="region" value="na" /> North America
+          </label>
+          <label>
+            <input type="radio" name="region" value="other" /> Somewhere else
+          </label>
+        </fieldset>
+
+        <label class="wide">
+          <span class="q">3 · What are you looking for?</span>
+          <textarea
+            name="looking"
+            rows="5"
+            placeholder="The types of role, stack, compensation, time zone, or other constraints that you're looking for would be useful to know."></textarea>
+        </label>
+      </form>
+      <div class="verdict" id="verdict" aria-live="polite"></div>
+
+      <template id="fit">
+        <h3>You're who this is for.</h3>
+        <p>
+          Book a time. We point the system at your profile on the call and look
+          at the first jobs it finds together.
+        </p>
         <a class="book book-big" href="https://cal.com/alexlazar/30-min-meeting"
           >Book a setup</a
         >
-        <a
-          class="repo"
-          href="https://github.com/mauricedesaxe/job-finder"
-          rel="noopener noreferrer">Github Repo</a
-        >
-      </div>
+      </template>
+
+      <template id="waitlist-junior">
+        <h3>Not yet.</h3>
+        <p>
+          I'm not offering the white-glove experience to junior developers just
+          yet. Feel free to use the open-source version of the system yourself
+          and put your email in to get updates.
+        </p>
+        <div class="waitlist-row">
+          <input type="email" placeholder="you@example.com" aria-label="Email" />
+          <button class="book" type="button">Join the waitlist</button>
+        </div>
+        <p class="waitlist-note">Product updates if I get traction and decide to take this project further.</p>
+      </template>
+
+      <template id="waitlist-region">
+        <h3>Not here yet.</h3>
+        <p>
+          I'm not offering the white-glove experience to people outside of
+          Europe or North America just yet. Feel free to use the open-source
+          version of the system yourself and put your email in to get updates.
+        </p>
+        <div class="waitlist-row">
+          <input type="email" placeholder="you@example.com" aria-label="Email" />
+          <button class="book" type="button">Join the waitlist</button>
+        </div>
+        <p class="waitlist-note">Product updates if I get traction and decide to take this project further.</p>
+      </template>
     </section>
   </main>
 </PageLayout>
@@ -218,4 +285,22 @@ const circlePath =
       frame.replaceChildren(iframe);
     });
   });
+</script>
+
+<script>
+  const form = document.getElementById('intake-form') as HTMLFormElement;
+  const verdict = document.getElementById('verdict') as HTMLElement;
+
+  function route() {
+    const data = new FormData(form);
+    const level = (data.get('level') as string) ?? 'mid';
+    const region = (data.get('region') as string) ?? 'eu';
+    const id =
+      level === 'junior' ? 'waitlist-junior' : region === 'other' ? 'waitlist-region' : 'fit';
+    const tpl = document.getElementById(id) as HTMLTemplateElement;
+    verdict.replaceChildren(tpl.content.cloneNode(true));
+  }
+
+  form.addEventListener('change', route);
+  route();
 </script>
