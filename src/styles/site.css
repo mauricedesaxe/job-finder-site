@@ -139,10 +139,10 @@ body {
 @media (min-width: 80rem) {
   .call-img {
     position: absolute;
-    top: -1.5rem;
-    right: -13rem;
-    width: 12rem;
-    margin: 0;
+    top: -2.75rem;
+    right: -14rem;
+    width: 12.5rem;
+    transform: rotate(-6deg);
   }
 }
 
