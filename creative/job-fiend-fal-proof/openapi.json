@@ -1,0 +1,6 @@
+{
+  "error": {
+    "code": "expansion_failed",
+    "message": "Failed to fetch OpenAPI schema"
+  }
+}

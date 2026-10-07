@@ -1,0 +1,43 @@
+{
+  "model": "fal-ai/nano-banana/edit",
+  "prompt": "Use the reference image as the exact identity and rendering style for Job Fiend. Make one new full-body pose of the same soft, rounded 3D character cheerfully waving with one hand while carrying the navy résumé folder with its small gold star in the other. Preserve the pale blue knitted beanie with white star patch, simple smiling white face with blush, warm cream coat, blue trousers, tiny shoes, plush clay-like texture, gentle studio light, and warm ivory background. The pose should read clearly at small website size. No lettering, extra characters, or new accessories.",
+  "settings": {
+    "num_images": 1,
+    "aspect_ratio": "1:1",
+    "output_format": "webp",
+    "limit_generations": true
+  },
+  "references": [
+    {
+      "source": "../../public/images/job-fiend-3d.webp",
+      "role": "approved identity and rendering style",
+      "uploaded_url": "https://v3b.fal.media/files/b/0aad7181/jSJOi7Du-4C2uNCyYTaUo_approved-mascot.webp",
+      "sha256": "aaf3b0a8590d31f578e76d6fb676f459e0e093ebfd6bc03bca006af9dc1fb3a3"
+    }
+  ],
+  "generatedAt": "2026-10-07T16:19:13.168Z",
+  "tool": "genmedia 0.7.0",
+  "pricing": {
+    "prices": [
+      {
+        "endpoint_id": "fal-ai/nano-banana/edit",
+        "unit_price": 0.0398,
+        "unit": "images",
+        "currency": "USD"
+      }
+    ],
+    "next_cursor": null,
+    "has_more": false
+  },
+  "requestId": "01a11723-3f6d-73e2-8dfe-b9b18925e871",
+  "runRecord": {
+    "path": "result.json",
+    "sha256": "41f7cbbefdfc1d0c8a06aff0ce198d9e1b97fc0b011bf38c5fa340995fb1c0a7"
+  },
+  "assets": [
+    {
+      "path": "generated.webp",
+      "sha256": "63263dc2386d8686718d40a3be63cf92cfb1ff6342dd3a06f6273711201fa326"
+    }
+  ]
+}

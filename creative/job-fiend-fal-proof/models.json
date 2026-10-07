@@ -1,0 +1,27 @@
+{
+  "status": "active",
+  "endpoint_ids": [
+    "fal-ai/nano-banana/edit"
+  ],
+  "count": 1,
+  "has_more": false,
+  "models": [
+    {
+      "endpoint_id": "fal-ai/nano-banana/edit",
+      "name": "Nano Banana",
+      "category": "image-to-image",
+      "status": "active",
+      "description": "Google's famous original image generation and editing model",
+      "tags": [
+        "image-editing"
+      ],
+      "updated_at": "2026-06-26T20:56:24.634Z",
+      "is_favorited": false,
+      "thumbnail_url": "https://v3b.fal.media/files/b/0a9f9a4a/mjFnPPGaaBaf5OHrDSoSO_ns4MA9ac.png",
+      "model_url": "https://fal.run/fal-ai/nano-banana/edit",
+      "date": "2025-08-19T22:16:18.949Z",
+      "highlighted": false,
+      "pinned": false
+    }
+  ]
+}
