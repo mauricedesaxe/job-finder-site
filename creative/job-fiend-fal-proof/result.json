@@ -1,0 +1,31 @@
+{
+  "status": "completed",
+  "endpoint_id": "fal-ai/nano-banana/edit",
+  "request_id": "01a11723-3f6d-73e2-8dfe-b9b18925e871",
+  "result": {
+    "images": [
+      {
+        "url": "https://v3b.fal.media/files/b/0aad718a/U8rEyein5MCcVW_8C3keF_GnieaYeT.webp",
+        "content_type": "image/webp",
+        "file_name": "U8rEyein5MCcVW_8C3keF_GnieaYeT.webp",
+        "file_size": null,
+        "width": 1024,
+        "height": 1024
+      }
+    ],
+    "description": ""
+  },
+  "downloaded_files": [
+    {
+      "url": "https://v3b.fal.media/files/b/0aad718a/U8rEyein5MCcVW_8C3keF_GnieaYeT.webp",
+      "path": "/private/tmp/lazar-fal-proof/generated.webp",
+      "size_bytes": 40154,
+      "json_path": "images[0]"
+    }
+  ],
+  "gallery": {
+    "session_id": "290df8660a07",
+    "path": "/Users/lazaralex/.genmedia/gallery/sessions/290df8660a07/index.html",
+    "url": "file:///Users/lazaralex/.genmedia/gallery/sessions/290df8660a07/index.html"
+  }
+}
