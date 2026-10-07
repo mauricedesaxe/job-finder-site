@@ -40,6 +40,7 @@ const steps = [
       "This is the core value exchange I'm asking for from you.",
       "My system will absolutely find you jobs once it's past that initial learning phase. I know because it found me jobs that I liked and applied to.",
       "But I need to be able to collect this feedback from you to be able to improve the system even further so that more people can benefit from it.",
+      "I can see the jobs in your queue, the decisions you make, and the notes you leave. I use that feedback to improve the search, and I won't publish your companies or notes.",
     ],
   },
   {
@@ -52,168 +53,92 @@ const steps = [
   },
 ];
 
-const circlePath =
-  'M20 3.2 C 30.5 2.2, 37.6 8.8, 37.2 19.6 C 36.8 30.6, 30.2 36.9, 19.8 36.8 C 9.4 36.7, 2.9 30.4, 3.1 19.8 C 3.3 9.6, 9.8 4.2, 20 3.2';
-
-// Five hand-drawn connectors, one per step gap — all in the same flowing
-// curve family (loops and S-sweeps), each drawn a little differently.
-const connectors = [
-  {
-    // loop-de-loop — the feedback loop
-    body: 'M100 8 C 76 2, 58 6, 50 16 C 43 25, 48 36, 56 33 C 64 30, 64 20, 56 18 C 48 16, 38 27, 24 42',
-    head: 'M32 44 L 18 48 L 25 34',
-  },
-  {
-    // serpentine — long lazy S
-    body: 'M100 6 C 64 -2, 84 28, 52 32 C 26 35, 36 46, 22 46',
-    head: 'M28 36 L 16 47 L 31 51',
-  },
-  {
-    // double loop — keeps learning, loops again
-    body: 'M100 8 C 82 2, 70 4, 64 12 C 59 19, 62 27, 68 25 C 74 23, 73 15, 67 15 C 61 15, 56 22, 52 30 C 50 39, 53 47, 59 44 C 65 41, 63 33, 56 34 C 49 35, 40 40, 24 44',
-    head: 'M28 36 L 16 47 L 31 51',
-  },
-  {
-    // swoop — one deep graceful dive
-    body: 'M100 6 C 66 0, 36 12, 22 40',
-    head: 'M30 38 L 17 47 L 19 32',
-  },
-  {
-    // flourish — high loop, long sweeping tail
-    body: 'M100 10 C 86 2, 74 2, 68 10 C 63 17, 68 25, 74 22 C 80 19, 78 11, 72 12 C 66 13, 58 20, 50 28 C 42 36, 34 42, 24 44',
-    head: 'M28 36 L 16 47 L 31 51',
-  },
-];
 ---
 
 <PageLayout title={title} description={description} canonicalPath="/">
-  <main class="page">
-    <header class="hero">
+  <header class="site-header">
+    <a class="wordmark" href="#top">Job Fiend<span aria-hidden="true">✳</span></a>
+    <nav aria-label="Main navigation">
+      <a href="#how">How it works</a>
+      <a href="#demo">Demo</a>
+    </nav>
+    <a class="header-book" href="#intake">Book a setup <span aria-hidden="true">↗</span></a>
+  </header>
+
+  <main class="page" id="top">
+    <section class="hero" aria-labelledby="hero-title">
       <div class="hero-grid">
         <div class="hero-copy">
-          <h1>{title}</h1>
-          <svg class="scribble" viewBox="0 0 220 18" aria-hidden="true">
-            <path
-              d="M2 11 C 28 4, 46 16, 72 9 S 120 17, 148 8 S 196 15, 218 10"
-              fill="none"
-              stroke="#49B6E5"
-              stroke-width="3"
-              stroke-linecap="round"
-            />
-          </svg>
+          <p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span>A private search, run with you</p>
+          <h1 id="hero-title">Find the jobs.<br /><em>Keep your spark.</em></h1>
           <p class="lede">{description}</p>
           <div class="actions">
-            <svg class="arrow" viewBox="0 0 110 64" aria-hidden="true">
-              <path
-                d="M100 8 C 68 2, 34 14, 18 44"
-                fill="none"
-                stroke="#49B6E5"
-                stroke-width="3"
-                stroke-linecap="round"
-              />
-              <path
-                d="M26 42 L 13 51 L 15 36"
-                fill="none"
-                stroke="#49B6E5"
-                stroke-width="3"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
-            <a class="book" href="#intake">Book a setup</a>
-            <a
-              class="repo"
-              href="https://github.com/mauricedesaxe/job-finder"
-              rel="noopener noreferrer">Github Repo</a
-            >
+            <a class="book" href="#intake">Book a setup <span aria-hidden="true">↗</span></a>
+            <a class="repo" href="https://github.com/mauricedesaxe/job-finder" rel="noopener noreferrer">Github Repo <span aria-hidden="true">↗</span></a>
           </div>
+          <p class="hero-note">I'll set it up with you and we can look at the first jobs together.</p>
         </div>
-        <div class="hero-media">
-          <div class="demo-frame video-facade">
-            <div class="video-window">
-              <button
-                class="facade-play"
-                type="button"
-                data-video="https://www.youtube-nocookie.com/embed/bO7vzA0xbWg?autoplay=1"
-                aria-label="Play the demo video"
-              >
-                <span class="play-badge">
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M8 5.5 L 18 12 L 8 18.5 Z" />
-                  </svg>
-                </span>
-              </button>
-            </div>
-          </div>
-          <p class="video-caption">Me, running it live on my own job search.</p>
+        <div class="hero-art">
+          <div class="art-halo" aria-hidden="true"></div>
+          <img
+            class="mascot"
+            src="/images/job-fiend-3d.webp"
+            alt="A smiling 3D Job Fiend walking with job folders and coffee"
+            width="1024"
+            height="1024"
+            fetchpriority="high"
+          />
+          <span class="art-caption">A little help for the hunt</span>
+          <span class="art-spark art-spark-one" aria-hidden="true">✳</span>
+          <span class="art-spark art-spark-two" aria-hidden="true">✦</span>
         </div>
       </div>
-    </header>
+    </section>
 
-    <div class="steps">
-      {steps.map((step, i) => (
-        <section class="block card">
-          {i > 0 && (
-            <svg class="connector" viewBox="0 0 110 64" aria-hidden="true">
-              <path
-                d={connectors[i - 1].body}
-                fill="none"
-                stroke="#49B6E5"
-                stroke-width="3"
-                stroke-linecap="round"
-              />
-              <path
-                d={connectors[i - 1].head}
-                fill="none"
-                stroke="#49B6E5"
-                stroke-width="3"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
-          )}
-          <span class="marker" aria-hidden="true">
-            <svg viewBox="0 0 40 40">
-              <path
-                d={circlePath}
-                fill="none"
-                stroke="#263D5B"
-                stroke-width="2"
-                stroke-linecap="round"
-                filter="url(#wobble)"
-              />
-            </svg>
-            <span class="marker-n">{i + 1}</span>
-          </span>
-          <div class="block-body">
-            <h2>{step.title}</h2>
-            {step.paragraphs.map((paragraph) => (
-              <p class="sub">{paragraph}</p>
-            ))}
-            {i === 0 && (
-              <img
-                class="card-img"
-                src="/images/job-fiend-desk.webp"
-                alt=""
-                width="1130"
-                height="1046"
-                loading="lazy"
-              />
-            )}
-            {i === 4 && (
-              <img
-                class="card-img"
-                src="/images/job-fiend-sign.webp"
-                alt="A cardboard sign reading: will find you jobs for free"
-                width="741"
-                height="1154"
-                loading="lazy"
-              />
-            )}
-          </div>
-        </section>
-      ))}
-    </div>
+    <section class="offer" id="how" aria-labelledby="offer-title">
+      <div class="section-heading">
+        <p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span>How it works</p>
+        <h2 id="offer-title">A search that starts with a conversation.</h2>
+        <p>I run the search for you. We look at the first jobs together, then your reviews help me make it more useful.</p>
+      </div>
+      <div class="steps">
+        {steps.map((step, i) => (
+          <section class="card" aria-labelledby={'step-' + (i + 1)}>
+            <div class="card-heading">
+              <span class="marker" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+              <h3 id={'step-' + (i + 1)}>{step.title}</h3>
+            </div>
+            <div class="card-body">
+              {step.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+            </div>
+          </section>
+        ))}
+      </div>
+    </section>
+
+    <section class="demo" id="demo" aria-labelledby="demo-title">
+      <div class="demo-copy">
+        <p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span>Watch the demo</p>
+        <h2 id="demo-title">See the search in action.</h2>
+        <p>Me, running it live on my own job search.</p>
+      </div>
+      <div class="demo-frame video-facade">
+        <div class="video-window">
+          <button
+            class="facade-play"
+            type="button"
+            data-video="https://www.youtube-nocookie.com/embed/bO7vzA0xbWg?autoplay=1"
+            aria-label="Play the demo video"
+          >
+            <span class="play-badge">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M8 5.5 L 18 12 L 8 18.5 Z" />
+              </svg>
+            </span>
+          </button>
+        </div>
+      </div>
+    </section>
 
     <section class="intake" id="intake">
       <svg class="scribble" viewBox="0 0 220 18" aria-hidden="true">
