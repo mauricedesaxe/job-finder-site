@@ -1,0 +1,276 @@
+<template>
+  <style>
+    @font-face {
+      font-family: "DM Sans";
+      src: url("assets/fonts/DM-Sans-Regular.ttf") format("truetype");
+      font-weight: 400;
+    }
+
+    @font-face {
+      font-family: "DM Sans";
+      src: url("assets/fonts/DM-Sans-Bold.ttf") format("truetype");
+      font-weight: 700;
+    }
+
+    #root {
+      position: relative;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      container-type: size;
+      color: #263d5b;
+      font-family: "DM Sans";
+    }
+
+    [id="spark-ground"] {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 19% 20%, rgba(170, 212, 235, 0.23), transparent 24%),
+        radial-gradient(circle at 83% 37%, rgba(232, 184, 101, 0.16), transparent 28%),
+        radial-gradient(circle at 40% 72%, rgba(154, 205, 232, 0.13), transparent 29%),
+        #fafdff;
+    }
+
+    [id="spark-ground"]::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: 0.04;
+      background-image: radial-gradient(#263d5b 0.7px, transparent 0.8px);
+      background-size: 4px 4px;
+      pointer-events: none;
+    }
+
+    [id="spark-wallpaper"] {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    [id="spark-wallpaper"] span {
+      position: absolute;
+      display: block;
+      height: 3.4cqh;
+      border: 0.2cqw solid #1e1e1e;
+      border-radius: 9999px;
+    }
+
+    [id="spark-wallpaper"] span:nth-child(1) {
+      top: 5.6cqh;
+      left: 4.5cqw;
+      width: 7.5cqw;
+      background: #e8b865;
+      transform: rotate(-16deg);
+    }
+
+    [id="spark-wallpaper"] span:nth-child(2) {
+      top: 6.3cqh;
+      left: 39cqw;
+      width: 5.5cqw;
+      background: #aad4eb;
+      transform: rotate(18deg);
+    }
+
+    [id="spark-wallpaper"] span:nth-child(3) {
+      top: 18cqh;
+      left: 49cqw;
+      width: 3.3cqw;
+      background: #e3a944;
+      transform: rotate(-28deg);
+    }
+
+    [id="spark-wallpaper"] span:nth-child(4) {
+      top: 65cqh;
+      left: 3.4cqw;
+      width: 6.2cqw;
+      background: #9acde8;
+      transform: rotate(18deg);
+    }
+
+    [id="spark-wallpaper"] span:nth-child(5) {
+      top: 73cqh;
+      left: 46cqw;
+      width: 4.4cqw;
+      background: #f0d29e;
+      transform: rotate(-22deg);
+    }
+
+    [id="spark-wallpaper"] span:nth-child(6) {
+      top: 8cqh;
+      right: 4cqw;
+      width: 4.4cqw;
+      background: #75badf;
+      transform: rotate(24deg);
+    }
+
+    [id="spark-copy"] {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+    }
+
+    [id="spark-label"] {
+      position: absolute;
+      top: 12.5cqh;
+      left: 5cqw;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 33cqw;
+      min-height: 6.4cqh;
+      padding: 0.7cqh 1.3cqw;
+      box-sizing: border-box;
+      border: 0.2cqw solid #1e1e1e;
+      border-radius: 9999px;
+      background: #e8b865;
+      box-shadow: 0.3cqw 0.3cqw 0 rgba(26, 26, 26, 0.08);
+      font-size: 1.38cqw;
+      font-weight: 700;
+      letter-spacing: 0.035em;
+      white-space: nowrap;
+    }
+
+    [id="spark-headline"] {
+      position: absolute;
+      top: 28.5cqh;
+      left: 5cqw;
+      width: 47cqw;
+      font-weight: 700;
+      letter-spacing: -0.035em;
+      line-height: 0.99;
+    }
+
+    [id="spark-find-line"],
+    [id="spark-keep-line"] {
+      display: flex;
+      align-items: baseline;
+      white-space: nowrap;
+    }
+
+    [id="spark-find-line"] {
+      gap: 0.25em;
+      font-size: 4.2cqw;
+    }
+
+    [id="spark-keep-line"] {
+      margin-top: 2.7cqh;
+      gap: 0.22em;
+      font-size: 5.7cqw;
+    }
+
+    [id="spark-spark-line"] {
+      display: block;
+      margin-top: 2.5cqh;
+      font-size: 7.8cqw;
+    }
+
+    [id="spark-headline"] span {
+      display: inline-block;
+      opacity: 0;
+    }
+
+    [id="spark-rule"] {
+      position: absolute;
+      top: 76cqh;
+      left: 5.4cqw;
+      width: 38cqw;
+      height: 0.7cqh;
+      border-radius: 9999px;
+      background: #9acde8;
+      transform-origin: left center;
+    }
+
+    [id="spark-mascot-layer"] {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+    }
+
+    [id="spark-mascot-card"] {
+      position: absolute;
+      top: 5.5cqh;
+      left: 55cqw;
+      width: 39cqw;
+      height: 74cqh;
+      box-sizing: border-box;
+      overflow: hidden;
+      border: 0.2cqw solid #1e1e1e;
+      border-radius: 2rem;
+      background: #fff;
+      box-shadow: 0.6cqw 0.6cqw 0 rgba(26, 26, 26, 0.08);
+      transform-origin: 50% 50%;
+    }
+
+    [id="spark-mascot-image"] {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  </style>
+
+  <div id="root" data-composition-id="01-spark" data-width="1920" data-height="1080">
+    <div class="clip" id="spark-ground" data-start="0" data-duration="6" data-track-index="0"></div>
+    <div class="clip" id="spark-wallpaper" data-start="0" data-duration="6" data-track-index="1">
+      <span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+    <div class="clip" id="spark-mascot-layer" data-start="0" data-duration="6" data-track-index="2">
+      <div id="spark-mascot-card">
+        <img id="spark-mascot-image" src="assets/job-fiend-3d.webp" alt="" />
+      </div>
+    </div>
+    <div class="clip" id="spark-copy" data-start="0" data-duration="6" data-track-index="3">
+      <div id="spark-label">A private search, run with you</div>
+      <div id="spark-headline">
+        <div id="spark-find-line"><span id="spark-find">Find</span><span id="spark-the">the</span><span id="spark-jobs">jobs.</span></div>
+        <div id="spark-keep-line"><span id="spark-keep">Keep</span><span id="spark-your">your</span></div>
+        <div id="spark-spark-line"><span id="spark-spark">spark.</span></div>
+      </div>
+      <div id="spark-rule"></div>
+    </div>
+  </div>
+
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    window.__timelines = window.__timelines || {};
+    window.__timelines["01-spark"] = tl;
+
+    tl.fromTo('[id="spark-mascot-card"]',
+      { scale: 0, opacity: 0, x: 100 },
+      { scale: 1, opacity: 1, x: 0, duration: 0.64, ease: "power3.out" },
+      0.05);
+    tl.fromTo('[id="spark-label"]',
+      { opacity: 0, y: 18 },
+      { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" },
+      0.22);
+
+    const words = [
+      ["spark-find", 1.56, 80, 0.19],
+      ["spark-the", 1.73, 48, 0.16],
+      ["spark-jobs", 1.87, 45, 0.15],
+      ["spark-keep", 2.51, 80, 0.19],
+      ["spark-your", 2.68, 48, 0.16],
+      ["spark-spark", 2.83, 70, 0.19],
+    ];
+    for (const [id, at, y, duration] of words) {
+      const target = `[id="${id}"]`;
+      tl.set(target, { opacity: 1, y }, at);
+      tl.to(target, { y: 0, duration, ease: "power4.out" }, at);
+    }
+
+    tl.to('[id="spark-mascot-image"]',
+      { x: 15, y: -10, rotation: -1, duration: 0.36, ease: "power2.out" },
+      2.30);
+    tl.to('[id="spark-mascot-image"]',
+      { x: 0, y: 0, rotation: 0, duration: 0.48, ease: "power2.out" },
+      2.68);
+    tl.fromTo('[id="spark-rule"]',
+      { scaleX: 0, opacity: 1 },
+      { scaleX: 1, opacity: 1, duration: 0.65, ease: "power3.out" },
+      3.60);
+  </script>
+</template>

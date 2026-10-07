@@ -1,0 +1,282 @@
+<template>
+  <style>
+    @font-face {
+      font-family: "DM Sans";
+      src: url("assets/fonts/DM-Sans-Regular.ttf") format("truetype");
+      font-style: normal;
+      font-weight: 400;
+    }
+
+    @font-face {
+      font-family: "DM Sans";
+      src: url("assets/fonts/DM-Sans-Bold.ttf") format("truetype");
+      font-style: normal;
+      font-weight: 700 800;
+    }
+
+    #root {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      container-type: size;
+      color: #263d5b;
+      font-family: "DM Sans", sans-serif;
+    }
+
+    #root .clip {
+      position: absolute;
+      inset: 0;
+    }
+
+    #root [class~="setup-ground"] {
+      background:
+        radial-gradient(circle at 20% 28%, rgb(170 212 235 / 24%), transparent 37%),
+        radial-gradient(circle at 77% 70%, rgb(240 210 158 / 19%), transparent 37%),
+        radial-gradient(circle at 94% 11%, rgb(232 184 101 / 13%), transparent 25%),
+        #fafdff;
+    }
+
+    #root [class~="setup-ground"]::after {
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(#263d5b 0.55px, transparent 0.65px);
+      background-size: 5px 5px;
+      opacity: 0.04;
+      content: "";
+    }
+
+    #root [class~="setup-wallpaper"] {
+      position: absolute;
+      z-index: 0;
+      border: 0.2cqw solid #1e1e1e;
+      border-radius: 9999px;
+    }
+
+    #root [class~="setup-wallpaper-a"] {
+      left: 2.2cqw;
+      top: 3.1cqh;
+      width: 8cqw;
+      height: 1.7cqw;
+      rotate: -18deg;
+      background: #e8b865;
+    }
+
+    #root [class~="setup-wallpaper-b"] {
+      left: 39cqw;
+      top: 2.5cqh;
+      width: 5cqw;
+      height: 1.6cqw;
+      rotate: 20deg;
+      background: #aad4eb;
+    }
+
+    #root [class~="setup-wallpaper-c"] {
+      right: 3cqw;
+      top: 6cqh;
+      width: 5.4cqw;
+      height: 1.45cqw;
+      rotate: 24deg;
+      background: #f0d29e;
+    }
+
+    #root [class~="setup-wallpaper-d"] {
+      left: 42cqw;
+      top: 75cqh;
+      width: 4.8cqw;
+      height: 1.45cqw;
+      rotate: -21deg;
+      background: #9acde8;
+    }
+
+    #root [class~="setup-wallpaper-e"] {
+      right: 1.8cqw;
+      top: 74cqh;
+      width: 6.4cqw;
+      height: 1.6cqw;
+      rotate: 19deg;
+      background: #e3a944;
+    }
+
+    #root [class~="setup-visual"] {
+      position: absolute;
+      z-index: 1;
+      left: 3.8cqw;
+      top: 6cqh;
+      width: 41.5cqw;
+      height: 76.3cqh;
+      overflow: hidden;
+      border: 0.2cqw solid #1e1e1e;
+      border-radius: 2rem;
+      background: #fff;
+      box-shadow: 0.6cqw 0.6cqw 0 rgb(26 26 26 / 8%);
+      transform-origin: 50% 75%;
+    }
+
+    #root [class~="setup-visual"] img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 50% 51%;
+    }
+
+    #root [class~="setup-copy"] {
+      position: absolute;
+      z-index: 2;
+      left: 49.2cqw;
+      top: 11cqh;
+      width: 44cqw;
+    }
+
+    #root [class~="setup-heading"] {
+      margin: 0;
+      max-width: 43cqw;
+      font-size: 4.05cqw;
+      font-weight: 700;
+      line-height: 1.06;
+      letter-spacing: -0.02em;
+    }
+
+    #root [class~="setup-heading"] span {
+      display: block;
+    }
+
+    #root [class~="setup-rule"] {
+      width: 4.2cqw;
+      height: 0.23cqw;
+      margin-top: 2cqh;
+      border-radius: 9999px;
+      background: #287eac;
+    }
+
+    #root [class~="setup-cards"] {
+      display: grid;
+      gap: 1.35cqh;
+      margin-top: 3.6cqh;
+    }
+
+    #root [class~="setup-card"] {
+      display: flex;
+      align-items: center;
+      min-height: 9.3cqh;
+      padding: 0.8cqw 1.65cqw;
+      border: 0.2cqw solid #1e1e1e;
+      border-radius: 2rem;
+      background: #fff;
+      box-shadow: 0.4cqw 0.4cqw 0 rgb(26 26 26 / 8%);
+      font-size: 1.55cqw;
+      font-weight: 700;
+      line-height: 1.25;
+      transform-origin: 50% 50%;
+    }
+
+    #root [class~="setup-card-marker"] {
+      flex: 0 0 auto;
+      width: 2.3cqw;
+      height: 2.3cqw;
+      margin-right: 1.25cqw;
+      border: 0.2cqw solid #1e1e1e;
+      border-radius: 50%;
+    }
+
+    #root [class~="setup-card"]:first-child [class~="setup-card-marker"] {
+      background: #aad4eb;
+    }
+
+    #root [class~="setup-card"]:last-child [class~="setup-card-marker"] {
+      background: #e8b865;
+    }
+
+    #root [class~="setup-cta"] {
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 3cqw;
+      min-width: 34cqw;
+      min-height: 8.8cqh;
+      margin-top: 3.8cqh;
+      padding: 0.9cqw 1.25cqw 0.9cqw 2cqw;
+      border: 0.2cqw solid #1e1e1e;
+      border-radius: 9999px;
+      background: #263d5b;
+      box-shadow: 0.4cqw 0.4cqw 0 rgb(26 26 26 / 8%);
+      color: #fff;
+      font-size: 1.6cqw;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      line-height: 1.15;
+    }
+
+    #root [class~="setup-cta-arrow"] {
+      display: grid;
+      flex: 0 0 auto;
+      place-items: center;
+      width: 3.5cqw;
+      height: 3.5cqw;
+      border: 0.2cqw solid #1e1e1e;
+      border-radius: 50%;
+      background: #e8b865;
+      color: #263d5b;
+      font-size: 2cqw;
+      line-height: 1;
+    }
+  </style>
+
+  <div id="root" data-composition-id="02-setup" data-width="1920" data-height="1080">
+    <div id="setup-ground" class="clip setup-ground" data-start="0" data-duration="6" data-track-index="0"></div>
+    <div id="setup-content" class="clip setup-content" data-start="0" data-duration="6" data-track-index="1">
+      <span class="setup-wallpaper setup-wallpaper-a" aria-hidden="true"></span>
+      <span class="setup-wallpaper setup-wallpaper-b" aria-hidden="true"></span>
+      <span class="setup-wallpaper setup-wallpaper-c" aria-hidden="true"></span>
+      <span class="setup-wallpaper setup-wallpaper-d" aria-hidden="true"></span>
+      <span class="setup-wallpaper setup-wallpaper-e" aria-hidden="true"></span>
+
+      <div id="setup-visual" class="setup-visual">
+        <img src="assets/job-fiend-call-3d.webp" alt="" />
+      </div>
+
+      <div class="setup-copy">
+        <h1 class="setup-heading">
+          <span id="setup-heading-a">A search that starts</span>
+          <span id="setup-heading-b">with a conversation.</span>
+        </h1>
+        <div id="setup-rule" class="setup-rule"></div>
+
+        <div class="setup-cards">
+          <div id="setup-card-a" class="setup-card">
+            <span class="setup-card-marker" aria-hidden="true"></span>
+            <span>I run the search for you.</span>
+          </div>
+          <div id="setup-card-b" class="setup-card">
+            <span class="setup-card-marker" aria-hidden="true"></span>
+            <span>We look at the first jobs together.</span>
+          </div>
+        </div>
+
+        <div id="setup-cta" class="setup-cta">
+          <span>Book your setup call</span>
+          <span class="setup-cta-arrow" aria-hidden="true">↗</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script>
+    (() => {
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("[id='setup-visual']", { x: -110, opacity: 0 }, { x: 0, opacity: 1, duration: 0.75, ease: "power3.out" }, 0);
+      tl.fromTo("[id='setup-heading-a']", { x: 38, opacity: 0 }, { x: 0, opacity: 1, duration: 0.7, ease: "power3.out" }, 0.15);
+      tl.fromTo("[id='setup-heading-b']", { x: 38, opacity: 0 }, { x: 0, opacity: 1, duration: 0.7, ease: "power3.out" }, 0.7);
+      tl.fromTo("[id='setup-rule']", { scaleX: 0, opacity: 0, transformOrigin: "0% 50%" }, { scaleX: 1, opacity: 1, duration: 0.55, ease: "power3.out" }, 1.15);
+      tl.fromTo("[id='setup-card-a']", { scale: 0, opacity: 0, y: 20 }, { scale: 1, opacity: 1, y: 0, duration: 0.65, ease: "power3.out" }, 1.75);
+      tl.fromTo("[id='setup-card-b']", { scale: 0, opacity: 0, y: 20 }, { scale: 1, opacity: 1, y: 0, duration: 0.65, ease: "power3.out" }, 2.75);
+      tl.to("[id='setup-visual']", { scale: 1.025, duration: 3.2, ease: "none" }, 0.75);
+      tl.fromTo("[id='setup-cta']", { x: 50, opacity: 0 }, { x: 0, opacity: 1, duration: 0.5, ease: "power3.out" }, 3.95);
+      tl.to("[id='setup-visual']", { scale: 1, duration: 0.55, ease: "power2.out" }, 3.95);
+      window.__timelines["02-setup"] = tl;
+    })();
+  </script>
+</template>
